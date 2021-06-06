@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "next start",
     "pg:run": "npx prisma db push --preview-feature"
   },
   "keywords": [],

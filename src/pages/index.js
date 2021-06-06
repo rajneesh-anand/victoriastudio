@@ -16,10 +16,9 @@ import ScrollToTop from "../components/scroll-to-top";
 import {SEO} from "../components/seo";
 
 const HomePage = () => {
-    return (
-        <>
+    return (        
             <Layout>
-                <SEO title="Hope – Health &amp; Medical React JS Template" />
+                <SEO title="SDA Legal &amp; Legal solutions" />
                 <div className="wrapper home-default-wrapper">
                     <Header />
                     <div className="main-content site-wrapper-reveal">
@@ -37,8 +36,7 @@ const HomePage = () => {
                      <Footer /> 
                     <ScrollToTop /> 
                 </div>
-            </Layout>
-        </>
+            </Layout>        
     );
 };
 
