@@ -72,7 +72,7 @@ const MainMenu = () => {
                     
                         href={process.env.PUBLIC_URL + "/about"}
                     >
-                        <a     className="main-menu-link">About</a>
+                        <a className="main-menu-link">About</a>
                     </Link>
                 </li>
                 <li>
