@@ -1,0 +1,20 @@
+@import "~slick-carousel/slick/slick.css";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/container";
+@import "base/font-family";
+@import "base/reset";
+@import "base/transition";
+
+@import "layouts/content";
+@import "layouts/footer";
+@import "layouts/header";
+
+@import "components/menu";
+@import "components/login";
+@import "components/loading";
+@import "components/ui";
