@@ -19,7 +19,7 @@ const Breadcrumb = ({
                                 {prevs.map((prev) => (
                                     <Link
                                         key={prev.text}
-                                        to={process.env.PUBLIC_URL + prev.path}
+                                        href={`${process.env.PUBLIC_URL + prev.path}`}
                                     >
                                         {prev.text}
                                         <span className="breadcrumb-sep">

@@ -5,7 +5,7 @@ import Footer from "../layouts/footer";
 import GoogleMapContainer from "../containers/global/map";
 import ContactPageContainer from "../containers/contact";
 import ScrollToTop from "../components/scroll-to-top";
-import SEO from "../components/seo";
+import {SEO} from "../components/seo";
 
 const ContactPage = () => {
     return (
@@ -14,10 +14,10 @@ const ContactPage = () => {
                 <SEO title="Hope – Contact" />
                 <div className="wrapper">
                     <Header />
-                    <div className="main-content site-wrapper-reveal">
+                    {/* <div className="main-content site-wrapper-reveal">
                         <GoogleMapContainer classOption="contact-map-area" />
                         <ContactPageContainer />
-                    </div>
+                    </div> */}
                     <Footer />
                     <ScrollToTop />
                 </div>
