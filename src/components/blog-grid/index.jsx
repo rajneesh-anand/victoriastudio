@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import Link  from "next/link";
 import { slugify } from "../../utils";
 
 const BlogGrid = ({ data }) => {

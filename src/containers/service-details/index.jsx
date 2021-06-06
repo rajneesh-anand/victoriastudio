@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import Link  from "next/link";
+
 import DepartmentWidget from "../../components/sidebar/department";
 import PropTypes from "prop-types";
 import SidebarWorkingTime from "../../components/sidebar/sidebar-working-time";

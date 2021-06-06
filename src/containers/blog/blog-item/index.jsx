@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Link } from "react-router-dom";
+import Link  from "next/link";
+
 import BlogListItem from "../../../components/blog-list";
 import SidebarSearch from "../../../components/sidebar/search";
 import SidebarCategories from "../../../components/sidebar/sidebar-categories";

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import Link  from "next/link";
 import SidebarTag from "../sidebar/sidebar-tag";
 import { slugify } from "../../utils";
 import BlogData from "../../data/blog.json";

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import Link  from "next/link";
+
 import { flatDeep, slugify, containsObject } from "../../../utils";
 
 const SidebarCategories = ({ data }) => {

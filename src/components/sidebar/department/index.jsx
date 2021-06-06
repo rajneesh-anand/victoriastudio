@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import Link  from "next/link";
 import SidebarTitle from "../sidebar-title";
 import PropTypes from "prop-types";
 import { flatDeep, slugify, containsObject } from "../../../utils";
@@ -35,7 +35,7 @@ const DepartmentWidget = ({ data }) => {
                     {data.map((single, i) => {
                         return (
                             <li key={i}>
-                                <NavLink
+                                <Link
                                     activeClassName="active"
                                     to={
                                         process.env.PUBLIC_URL +
@@ -43,7 +43,7 @@ const DepartmentWidget = ({ data }) => {
                                     }
                                 >
                                     {single.title}
-                                </NavLink>
+                                </Link>
                             </li>
                         );
                     })}

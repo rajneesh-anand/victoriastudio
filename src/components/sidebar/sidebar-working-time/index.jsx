@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import Link  from "next/link";
+
 import SidebarTitle from "../sidebar-title";
 
 const SidebarWorkingTime = () => {
