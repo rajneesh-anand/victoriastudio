@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === "production";
-const assetPrefix = isProd ? "https://example.com/" : "http://localhost:3000/";
+const assetPrefix = isProd ? "https://sdalegal.vercel.app/" : "http://localhost:3000/";
 
 module.exports = { 
   env: {
