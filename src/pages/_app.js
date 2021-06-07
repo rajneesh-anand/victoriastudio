@@ -13,14 +13,14 @@ import "swiper/components/pagination/pagination.scss";
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
-        AOS.init({
-            offset: 80,
-            duration: 1000,
-            once: true,
-            easing: "ease",
-        });
-        AOS.refresh();
-    }, []);
+    AOS.init({
+      offset: 80,
+      duration: 500,
+      once: true,
+      easing: "ease",
+    });
+    AOS.refresh();
+  }, []);
   return (
     <Provider session={pageProps.session}>
       <Component {...pageProps} />
