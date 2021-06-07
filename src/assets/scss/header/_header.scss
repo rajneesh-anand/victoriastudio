@@ -1,5 +1,5 @@
 .header {
-  background: #8f1b1b;
+  background: #385067;
 }
 
 // header top
@@ -11,13 +11,13 @@
   p {
     font-family: "Sarabun", sans-serif;
     font-weight: 400;
-    color: #cccccc;
-    font-size: 14px;
+    color: #e9ecef;
+    font-size: 14.5px;
     span {
       font-weight: 700;
     }
     i {
-      margin-right: 20px;
+      margin-right: 5px;
     }
   }
 }
@@ -42,8 +42,8 @@
 // media css
 
 .header-middle {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  // padding-top: 15px;
+  // padding-bottom: 15px;
 }
 .media-wrap {
   display: flex;
@@ -133,9 +133,10 @@
   font-size: 14px;
   color: #fff;
   text-transform: uppercase;
-  padding: 15px 30px;
+  padding: 5px 12px;
   background: #6d0101;
   display: inline-block;
+  margin-left: 8px;
   &:hover {
     background: #000;
     color: #fff;

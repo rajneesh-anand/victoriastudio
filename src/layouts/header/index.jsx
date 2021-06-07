@@ -35,8 +35,8 @@ const Header = () => {
                         <div className="row row-cols-2">
                             <div className="col">
                                 <p>
-                                    <i className="icofont-google-map"></i>{" "}
-                                    <span>ADDRESS:</span> New Delhi, Delhi INDIA                               
+                                    <i className="icofont-ui-call"></i>
+                                   +91-89745456321 || support@sdalegal.com                            
                                 </p>
                             </div>
                             <div className="col">
@@ -87,7 +87,8 @@ const Header = () => {
                                             image={`${process.env.PUBLIC_URL}/img/logo.png`}
                                         />
                                     </div>
-                                    <ul className="media-wrap d-none d-lg-flex">
+                                   
+                                    {/* <ul className="media-wrap d-none d-lg-flex">
                                         {HomeData[0].headerInfo &&
                                             HomeData[0].headerInfo.map(
                                                 (single, key) => {
@@ -99,12 +100,32 @@ const Header = () => {
                                                     );
                                                 }
                                             )}
-                                    </ul>
+                                    </ul> */}
+
+                                    <div className="header-bottom d-none d-lg-block">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <div className="d-flex flex-wrap align-items-center justify-content-between">
+                                    <MainMenu />
                                     <Button
+                                        path={process.env.PUBLIC_URL + "/appointment"}
+                                        classOption="book-now-btn"
+                                        text="book an appointment"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+
+
+                                    {/* <Button
                                         path={process.env.PUBLIC_URL + "/"}
                                         classOption="book-now-btn d-none d-sm-inline-block d-lg-none"
                                         text="book an appointment"
-                                    />
+                                    /> */}
                                     <div className="mobile-menu-toggle d-lg-none">
                                         <button
                                             onClick={onCanvasHandler}
@@ -133,7 +154,7 @@ const Header = () => {
                     </div>
                 </div>
 
-                <div className="header-bottom d-none d-lg-block">
+                {/* <div className="header-bottom d-none d-lg-block">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
@@ -148,7 +169,7 @@ const Header = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div
                     className={`header-bottom sticky-header d-none d-lg-block ${
