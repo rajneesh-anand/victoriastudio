@@ -214,8 +214,8 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <MenuOverlay show={ofcanvasShow} />
-      <MobileMenu show={ofcanvasShow} onClose={onCanvasHandler} />
+      {/* <MenuOverlay show={ofcanvasShow} />
+      <MobileMenu show={ofcanvasShow} onClose={onCanvasHandler} /> */}
     </Fragment>
   );
 };
