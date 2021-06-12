@@ -6,7 +6,6 @@ import { CloseOutlined } from "@ant-design/icons";
 import Container from "../../../other/Container";
 import Link from "next/link";
 
-
 const HeaderMenu = ({ csrfToken }) => {
   const [session, loading] = useSession();
   const [menuSidebarOpen, setMenuSidebarOpen] = useState(false);
@@ -66,7 +65,6 @@ const HeaderMenu = ({ csrfToken }) => {
         Sign Out
       </Button>
     </>
-
   );
 
   return (
@@ -75,7 +73,7 @@ const HeaderMenu = ({ csrfToken }) => {
         <Container>
           <div className="menu-wrapper">
             <a
-              href="#"
+              href="/"
               className="menu-sidebar-opener"
               onClick={(e) => {
                 e.preventDefault();
@@ -117,8 +115,12 @@ const HeaderMenu = ({ csrfToken }) => {
                 <Button onClick={showModal}>JOIN</Button>
               ) : (
                 <>
-                  <Popover placement="bottom" title="My Account" content={content} trigger="click">
-
+                  <Popover
+                    placement="bottom"
+                    title="My Account"
+                    content={content}
+                    trigger="click"
+                  >
                     <Button>
                       {!session.user.name ? (
                         <>
@@ -149,7 +151,6 @@ const HeaderMenu = ({ csrfToken }) => {
                       )}
                     </Button>
                   </Popover>
-
                 </>
               )}
             </div>

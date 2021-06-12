@@ -52,7 +52,7 @@ const MobileMenu = ({ show, onClose }) => {
         <nav className="offcanvas-menu">
           <ul>
             <li>
-              <Link exact href={process.env.PUBLIC_URL + "/"}>
+              <Link href={process.env.PUBLIC_URL + "/"}>
                 <span className="menu-text">Home</span>
               </Link>
               <span
@@ -62,7 +62,7 @@ const MobileMenu = ({ show, onClose }) => {
               ></span>
               <ul className="offcanvas-submenu">
                 <li>
-                  <Link exact href={process.env.PUBLIC_URL + "/"}>
+                  <Link href={process.env.PUBLIC_URL + "/"}>
                     <a>Home 1</a>
                   </Link>
                 </li>

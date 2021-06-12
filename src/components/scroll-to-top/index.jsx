@@ -34,7 +34,7 @@ const ScrollToTop = (props) => {
     return (
         <button
             type="button"
-            className={`scroll-to-top ${stick ? "show" : ""}`}
+            className={`scroll-top ${stick ? "show" : ""}`}
             onClick={onClickHandler}
             {...props}
         >

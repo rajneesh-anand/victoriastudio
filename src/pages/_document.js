@@ -13,12 +13,15 @@ class MyDocument extends Document {
           <link
             href="https://kit-pro.fontawesome.com/releases/v5.13.0/css/pro.min.css"
             rel="stylesheet"
-          />       
+          />
+          <script
+            type="text/javascript"
+            src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"
+          ></script>
         </Head>
         <body>
           <Main />
           <NextScript />
-         
         </body>
       </Html>
     );

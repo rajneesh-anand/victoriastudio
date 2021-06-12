@@ -11,7 +11,7 @@ function Footer({ containerType }) {
           <Row justify="center" gutter={30}>
             <Col className="gutter-row" span="24" sm={12} lg={8}>
               <div className="footer-top-item -col-one">
-                <Link href="#">
+                <Link href="/">
                   <a>
                     <img src="/assets/images/logo-dark.png" alt="Logo" />
                   </a>
@@ -43,7 +43,7 @@ function Footer({ containerType }) {
                     <ul>
                       {links.account.map((item, index) => (
                         <li key={index}>
-                          <Link href="#">
+                          <Link href="/">
                             <a>{item.name}</a>
                           </Link>
                         </li>

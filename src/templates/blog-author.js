@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import React from "react";
-import Layout from "../layouts/index.jsx";
-import Header from "../layouts/header";
-import Breadcrumb from "../containers/global/breadcrumb/index.jsx";
-import Footer from "../layouts/footer";
-import BlogData from "../data/blog.json";
-import { slugify } from "../utils";
-import BlogItemContainer from "../containers/blog/blog-item";
 import ScrollToTop from "../components/scroll-to-top";
 import SEO from "../components/seo";
+import BlogItemContainer from "../containers/blog/blog-item";
+import PageTitleContainerTwo from "../containers/global/page-title-two";
+import BlogData from "../data/blog.json";
+import Footer from "../layouts/footer";
+import Header from "../layouts/header/index";
+import Layout from "../layouts/index";
+import { slugify } from "../utils";
 
 const BlogAuthor = ({
     match: {
@@ -20,16 +20,13 @@ const BlogAuthor = ({
     return (
         <React.Fragment>
             <Layout>
-                <SEO title="Hope – Blog Author" />
-                <div className="wrapper">
-                    <Header />
-                    <div className="main-content site-wrapper-reveal">
-                        <Breadcrumb
-                            prevs={[
-                                { text: "Home", path: "/" },
-                                { text: "Blog", path: "/blog" },
-                            ]}
-                            contentThree={authorTitle}
+                <SEO title="Alexis || Blog Author" />
+                <div className="wrapper home-default-wrapper">
+                    <Header classOption="hb-border" />
+                    <div className="main-content">
+                        <PageTitleContainerTwo
+                            subTitle="Author"
+                            title={authorTitle}
                         />
                         <BlogItemContainer data={data} />
                     </div>

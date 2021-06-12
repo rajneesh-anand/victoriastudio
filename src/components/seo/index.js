@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-export const SEO = ({ title, description, canonical, css, js, image }) => (
+const SEO = ({ title, description, canonical, css, js, image }) => (
   <Head>
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -37,3 +37,4 @@ export const SEO = ({ title, description, canonical, css, js, image }) => (
     {js && <script type="text/javascript" src={`${js}`}></script>}
   </Head>
 );
+export default SEO;
