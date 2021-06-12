@@ -25,7 +25,7 @@ const SEO = ({ title, description, canonical, css, js, image }) => (
     <meta name="twitter:creator" content="@propernounco" />
     {css && <link rel="stylesheet" href={`${css}`} />}
     {image ? (
-      <meta property="og:image" content={`${image}`} />
+      <meta property="og:image" content={image} />
     ) : (
       <meta
         property="og:image"

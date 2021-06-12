@@ -12,7 +12,10 @@ const HomePage = () => {
   return (
     <React.Fragment>
       <Layout>
-        <SEO title="Victoria Studio – Photography" />
+        <SEO
+          title="Victoria Studio – Photography"
+          image={process.env.PUBLIC_URL + "/og.png"}
+        />
         <div className="wrapper home-default-wrapper">
           <Header />
           <IntroContainer />
