@@ -16,16 +16,16 @@ const SEO = ({ title, description, canonical, css, js, image }) => (
       property="og:description"
       content={description}
     />
-    <meta property="og:site_name" content="Proper Noun" />
+    <meta property="og:site_name" content="Victoria Studio" />
     <meta property="og:url" content={`${canonical}`} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:site" content="@propernounco" />
-    <meta name="twitter:creator" content="@propernounco" />
+    <meta name="twitter:site" content="@victoriastudio" />
+    <meta name="twitter:creator" content="@victoriastudio" />
     {css && <link rel="stylesheet" href={`${css}`} />}
     {image ? (
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={`${image}`} />
     ) : (
       <meta
         property="og:image"
