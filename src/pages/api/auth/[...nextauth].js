@@ -6,8 +6,15 @@ import prisma from "../../../lib/prisma";
 const options = {
   providers: [
     Providers.Email({
-      server: process.env.SMTP_SERVER,
-      from: process.env.SMTP_FROM,
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM,
     }),
     Providers.Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -26,7 +33,7 @@ const options = {
   },
   pages: {
     error: "/auth/error",
-    verifyRequest: "/auth/verify-loginRequest",
+    verifyRequest: "/auth/verify-account",
   },
 };
 

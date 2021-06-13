@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/client";
 import { getClosest, getSiblings, slideToggle, slideUp } from "../../utils";
 
 const HamburgerMenu = ({ show, onClose }) => {
+  const [session] = useSession();
   const onClickHandler = (e) => {
     const target = e.currentTarget;
     const parentEl = target.parentElement;
@@ -43,6 +45,19 @@ const HamburgerMenu = ({ show, onClose }) => {
           </div>
 
           <div className="off-canvas-item">
+            {session && (
+              <>
+                <img
+                  src={session.user.image}
+                  style={{
+                    width: "24px",
+                    borderRadius: "50%",
+                    marginRight: 5,
+                  }}
+                />
+                <span>{session.user.name}</span>
+              </>
+            )}
             <div className="asside-navigation-area">
               <ul className="asside-menu">
                 <li className="item">
@@ -83,6 +98,15 @@ const HamburgerMenu = ({ show, onClose }) => {
                   <Link href="/contact">
                     <a>Contact</a>
                   </Link>
+                </li>
+                <li>
+                  {!session ? (
+                    <Link href="/auth/signin">
+                      <a>SignIn</a>
+                    </Link>
+                  ) : (
+                    <a onClick={() => signOut()}>Sign Out</a>
+                  )}
                 </li>
                 {/* <li className="dropdown-submenu">
                   <NavLink to={process.env.PUBLIC_URL + "/blog"}>
