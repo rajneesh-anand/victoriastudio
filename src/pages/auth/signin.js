@@ -38,7 +38,9 @@ export default function SignIn({ csrfToken }) {
                 <div className="google">
                   <a
                     onClick={() =>
-                      signIn("google", { callbackUrl: "http://localhost:3000" })
+                      signIn("google", {
+                        callbackUrl: "https://victoria-five.vercel.app",
+                      })
                     }
                   >
                     <span
