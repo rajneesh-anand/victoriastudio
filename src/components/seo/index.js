@@ -3,6 +3,7 @@ import Head from "next/head";
 
 const SEO = ({ title, description, canonical, css, js, image }) => (
   <Head>
+    <meta charset="utf-8" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta
@@ -23,16 +24,8 @@ const SEO = ({ title, description, canonical, css, js, image }) => (
     <meta name="twitter:description" content={description} />
     <meta name="twitter:site" content="@victoriastudio" />
     <meta name="twitter:creator" content="@victoriastudio" />
-    {css && <link rel="stylesheet" href={`${css}`} />}
-    {image ? (
-      <meta property="og:image" content={`${image}`} />
-    ) : (
-      <meta
-        property="og:image"
-        content="https://www.propernoun.co/static/images/proper-noun-social.png"
-      />
-    )}
-    {image && <meta name="twitter:image" content={`${image}`} />}
+    <meta property="og:image" content={process.env.PUBLIC_URL + "/og.png"} />
+    <meta name="twitter:image" content={process.env.PUBLIC_URL + "/og.png"} />
     {canonical && <link rel="canonical" href={`${canonical}`} />}
     {js && <script type="text/javascript" src={`${js}`}></script>}
   </Head>
