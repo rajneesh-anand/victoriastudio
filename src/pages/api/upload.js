@@ -27,7 +27,10 @@ export default async function handler(req, res) {
         .readFile(data.files.image.path)
         .catch((err) => console.error("Failed to read file", err));
 
-      let photo64 = parser.format(path.extname(data.files.image.name), photo);
+      let photo64 = parser.format(
+        path.extname(data.files.image.name).toString(),
+        photo
+      );
 
       try {
         const session = await getSession({ req });
