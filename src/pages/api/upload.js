@@ -27,10 +27,7 @@ export default async function handler(req, res) {
         .readFile(data.files.image.path)
         .catch((err) => console.error("Failed to read file", err));
 
-      let photo64 = parser.format(
-        path.extname(data.files.image.name).toString(),
-        photo
-      );
+      let photo64 = parser.format(path.extname(data.files.image.name), photo);
 
       try {
         const session = await getSession({ req });
@@ -46,6 +43,7 @@ export default async function handler(req, res) {
 
         res.status(200).json({
           msg: "success",
+          result: result,
         });
       } catch (error) {
         res.status(500).send(error);

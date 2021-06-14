@@ -7,6 +7,18 @@
     color: beige;
   }
 }
+.text-center-black {
+  text-align: center;
+  margin: 8px;
+  p {
+    text-transform: uppercase;
+    color: black;
+  }
+  a {
+    border: solid 1px teal;
+    padding: 6px 12px;
+  }
+}
 .main-search-active {
   background: rgba(0, 0, 0, 0.92) none repeat scroll 0 0;
   width: 100%;
