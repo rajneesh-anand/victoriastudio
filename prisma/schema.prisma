@@ -16,7 +16,7 @@ model Post {
   slug      String?
   content   String?
   tags      String[]
-  image     Bytes?
+  image     String?
   createdAt     DateTime  @default(now()) 
   published Boolean @default(false)
   author    User?   @relation(fields: [authorId], references: [id])

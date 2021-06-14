@@ -47,17 +47,22 @@ const HamburgerMenu = ({ show, onClose }) => {
           <div className="off-canvas-item">
             {session && (
               <>
-                <img
-                  src={session.user.image}
-                  style={{
-                    width: "24px",
-                    borderRadius: "50%",
-                    marginRight: 5,
-                  }}
-                />
-                <span>{session.user.name}</span>
+                <div className="text-center">
+                  <img
+                    src={session.user.image}
+                    style={{
+                      width: "60px",
+                      borderRadius: "50%",
+                      marginRight: 5,
+                    }}
+                  />
+                </div>
+                <div className="text-center">
+                  <p>{session.user.name}</p>
+                </div>
               </>
             )}
+            <hr />
             <div className="asside-navigation-area">
               <ul className="asside-menu">
                 <li className="item">
