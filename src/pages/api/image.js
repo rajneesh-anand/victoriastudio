@@ -1,4 +1,4 @@
-import Formidable from "Formidable";
+import formidable from "formidable";
 const fs = require("fs");
 
 export const config = {
@@ -9,7 +9,7 @@ export const config = {
 
 export default async function handler(req, res) {
   return new Promise(async (resolve, reject) => {
-    const form = new Formidable.IncomingForm({
+    const form = new formidable.IncomingForm({
       multiples: true,
       keepExtensions: true,
     });
