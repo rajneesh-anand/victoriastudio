@@ -8,10 +8,12 @@ import Link from "next/link";
 
 const Upload = () => {
   const [selectedImage, setSelectedImage] = useState();
+  const [message, setMessage] = useState();
   const [session, loading] = useSession();
 
   const handleChange = (event) => {
     setSelectedImage(event.target.files[0]);
+    setMessage(null);
   };
 
   const handleImageUpload = async () => {
@@ -20,12 +22,16 @@ const Upload = () => {
     }
     const formData = new FormData();
     formData.append("image", selectedImage);
-    const result = await fetch("/api/upload", {
+    console.log(process.env.API_SERVER);
+    const result = await fetch(process.env.API_SERVER + "/api/upload", {
       method: "POST",
       body: formData,
     });
     const resultJson = await result.json();
-    console.log(resultJson);
+    if (resultJson.msg === "success") {
+      setSelectedImage(null);
+      setMessage("Image uploaded successfully");
+    }
   };
 
   if (!loading && !session) {
@@ -67,15 +73,20 @@ const Upload = () => {
                 height={280}
               />
               <form>
-                <button type="button" onClick={handleImageUpload}>
-                  Upload
-                </button>
-                <input
-                  accept=".jpg, .png, .jpeg"
-                  onChange={handleChange}
-                  type="file"
-                />
+                <div style={{ marginTop: 10 }}>
+                  <input
+                    accept=".jpg, .png, .jpeg"
+                    onChange={handleChange}
+                    type="file"
+                  />
+                </div>
+                <div>
+                  <button type="button" onClick={handleImageUpload}>
+                    Upload
+                  </button>
+                </div>
               </form>
+              {message && <h4>{message}</h4>}
             </div>
           </div>
           <Footer />
