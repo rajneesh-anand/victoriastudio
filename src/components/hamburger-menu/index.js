@@ -104,23 +104,31 @@ const HamburgerMenu = ({ show, onClose }) => {
                     <a>Contact</a>
                   </Link>
                 </li>
-                <li>
-                  {!session ? (
+
+                {!session ? (
+                  <li>
                     <Link href="/auth/signin">
                       <a>SignIn</a>
                     </Link>
-                  ) : (
-                    <>
+                  </li>
+                ) : (
+                  <>
+                    <li>
                       <Link href="/upload">
                         <a>Upload</a>
                       </Link>
+                    </li>
+                    <li>
                       <Link href="/photos">
                         <a>Photo Gallery</a>
                       </Link>
+                    </li>
+                    <li>
                       <a onClick={() => signOut()}>Sign Out</a>
-                    </>
-                  )}
-                </li>
+                    </li>
+                  </>
+                )}
+
                 {/* <li className="dropdown-submenu">
                   <NavLink to={process.env.PUBLIC_URL + "/blog"}>
                     <span>Blog</span>
