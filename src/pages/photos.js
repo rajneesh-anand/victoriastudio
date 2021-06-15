@@ -6,19 +6,27 @@ export default function Photos({ data }) {
 
   return (
     <>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <h1>{post.title}</h1>
-          <Image src={post.image} alt={post.title} width={400} height={450} />
-        </div>
-      ))}
+      <div style={{ display: "flex" }}>
+        {posts.map((post) => (
+          <div key={post.id} style={{ margin: 10 }}>
+            <Image src={post.image} alt={post.title} width={250} height={300} />
+          </div>
+        ))}
+      </div>
     </>
   );
 }
 
 // This gets called on every request
 export async function getServerSideProps() {
-  const posts = await prisma.post.findMany();
+  const posts = await prisma.post.findMany({
+    select: {
+      id: true,
+      title: true,
+      image: true,
+    },
+  });
+
   // Fetch data from external API
   //   const res = await fetch(`https://.../data`);
   //   const data = await res.json();
