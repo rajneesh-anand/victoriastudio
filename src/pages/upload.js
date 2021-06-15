@@ -17,6 +17,7 @@ const Upload = () => {
   };
 
   const handleImageUpload = async () => {
+    console.log(selectedImage.name);
     if (!selectedImage) {
       return;
     }

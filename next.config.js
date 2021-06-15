@@ -1,8 +1,8 @@
 const isProd = process.env.NODE_ENV === "production";
 
 const assetPrefix = isProd
-  ? "https://victoria-five.vercel.app/"
-  : "http://localhost:3000/";
+  ? "https://victoria-five.vercel.app"
+  : "http://localhost:3000";
 
 const baseApiServer = isProd
   ? "https://nodappserver.herokuapp.com"
