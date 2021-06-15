@@ -9,4 +9,7 @@ module.exports = {
     PUBLIC_URL: "",
     baseUrl: assetPrefix,
   },
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
 };

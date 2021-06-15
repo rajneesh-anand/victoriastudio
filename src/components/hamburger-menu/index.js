@@ -110,7 +110,15 @@ const HamburgerMenu = ({ show, onClose }) => {
                       <a>SignIn</a>
                     </Link>
                   ) : (
-                    <a onClick={() => signOut()}>Sign Out</a>
+                    <>
+                      <Link href="/upload">
+                        <a>Upload</a>
+                      </Link>
+                      <Link href="/photos">
+                        <a>Photo Gallery</a>
+                      </Link>
+                      <a onClick={() => signOut()}>Sign Out</a>
+                    </>
                   )}
                 </li>
                 {/* <li className="dropdown-submenu">

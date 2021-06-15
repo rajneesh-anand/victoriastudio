@@ -30,7 +30,7 @@ const ContactForm = () => {
     <Fragment>
       <form
         className="contact-form-wrapper"
-        action="https://getform.io/f/a17a2715-d7ee-4ac4-8fcb-12f1eed43b2c"
+        action="/api/contact"
         method="POST"
         onSubmit={handleSubmit(onSubmit)}
       >
