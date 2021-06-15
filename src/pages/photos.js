@@ -16,7 +16,7 @@ export default function Photos({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("https://victoria-five.vercel.app/api/post");
+  const res = await fetch(process.env.API_SERVER + "/api/upload");
   const result = await res.json();
 
   return { props: { data: result } };
