@@ -24,10 +24,13 @@ const Upload = () => {
     const formData = new FormData();
     formData.append("image", selectedImage);
 
-    const result = await fetch(process.env.API_SERVER + "/api/upload", {
-      method: "POST",
-      body: formData,
-    });
+    const result = await fetch(
+      "https://nodappserver.herokuapp.com/api/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const resultJson = await result.json();
     if (resultJson.msg === "success") {
       setSelectedImage(null);
