@@ -4,8 +4,10 @@ import React, { useState, useEffect } from "react";
 export default function Photos() {
   const [postDetail, setPostDetail] = useState([]);
   const [loading, setLoading] = useState(true);
-  // https://nodappserver.herokuapp.com/api/upload
-  https: useEffect(async () => {
+
+  // "https://nodappserver.herokuapp.com/api/upload"
+
+  useEffect(async () => {
     const res = await fetch("https://nodappserver.herokuapp.com/api/upload");
     const data = await res.json();
     if (data.msg === "success") {
@@ -18,7 +20,9 @@ export default function Photos() {
   // const data = await res.json();
   // const posts = data.result;
   return loading ? (
-    <h1>Loading</h1>
+    <div className="text-center">
+      <h4>Loading.....</h4>
+    </div>
   ) : (
     <>
       <div style={{ display: "flex" }}>
