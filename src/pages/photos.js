@@ -1,9 +1,7 @@
-import prisma from "../lib/prisma";
 import Image from "next/image";
 
 export default function Photos({ data }) {
-  let posts = JSON.parse(data);
-
+  const posts = data.result;
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -17,20 +15,9 @@ export default function Photos({ data }) {
   );
 }
 
-// This gets called on every request
 export async function getServerSideProps() {
-  const posts = await prisma.post.findMany({
-    select: {
-      id: true,
-      title: true,
-      image: true,
-    },
-  });
+  const res = await fetch("https://victoria-five.vercel.app/api/post");
+  const result = await res.json();
 
-  // Fetch data from external API
-  //   const res = await fetch(`https://.../data`);
-  //   const data = await res.json();
-
-  // Pass data to the page via props
-  return { props: { data: JSON.stringify(posts) } };
+  return { props: { data: result } };
 }

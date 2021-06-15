@@ -23,7 +23,7 @@ const Upload = () => {
     }
     const formData = new FormData();
     formData.append("image", selectedImage);
-    console.log(process.env.API_SERVER);
+
     const result = await fetch(process.env.API_SERVER + "/api/upload", {
       method: "POST",
       body: formData,
