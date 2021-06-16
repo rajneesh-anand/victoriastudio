@@ -5,27 +5,58 @@ import Header from "../layouts/header";
 import Layout from "../layouts";
 import { useSession } from "next-auth/client";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+const Multiselect = dynamic(
+  () =>
+    import("multiselect-react-dropdown").then((module) => module.Multiselect),
+  {
+    ssr: false,
+  }
+);
 
 const Upload = () => {
   const [selectedImage, setSelectedImage] = useState();
   const [message, setMessage] = useState();
   const [session, loading] = useSession();
-  const categories = ["featured", "new added"];
+  const [tags, setTags] = useState([]);
+
+  const options = [
+    "featured",
+    "new added",
+    "nature",
+    "landscape",
+    "people",
+    "city",
+  ];
+  const selectedValues = ["new added"];
+
   const handleChange = (event) => {
     setSelectedImage(event.target.files[0]);
     setMessage(null);
   };
 
+  const onSelect = (event) => {
+    setTags(event);
+  };
+
+  const onRemove = (event) => {
+    setTags(event);
+
+    // selectedValues.push(event.target.value);
+  };
+
   const handleImageUpload = async () => {
-    console.log(selectedImage.name);
     if (!selectedImage) {
       return;
+    }
+    if (tags.length === 0) {
+      setTags(["new added"]);
     }
     const formData = new FormData();
     formData.append("image", selectedImage);
     formData.append("title", session.user.name);
     formData.append("excerpt", "Nature People Fashion Sea");
-    formData.append("categories", JSON.stringify(categories));
+    formData.append("categories", JSON.stringify(tags));
 
     const result = await fetch(
       "https://nodappserver.herokuapp.com/api/upload",
@@ -72,30 +103,65 @@ const Upload = () => {
           <Header />
 
           <div className="main-content">
-            <div className="text-center">
-              <img
-                src={selectedImage ? URL.createObjectURL(selectedImage) : null}
-                alt={selectedImage ? selectedImage.name : null}
-                width={250}
-                height={280}
-              />
-              <form>
-                <div style={{ marginTop: 10 }}>
-                  <input
-                    accept=".jpg, .png, .jpeg"
-                    onChange={handleChange}
-                    type="file"
-                  />
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-6 col-md-6">
+                  <div className="text-center">
+                    <img
+                      src={
+                        selectedImage
+                          ? URL.createObjectURL(selectedImage)
+                          : null
+                      }
+                      alt={selectedImage ? selectedImage.name : null}
+                      width={250}
+                      height={280}
+                    />
+                    <form>
+                      <div style={{ marginTop: 10 }}>
+                        <input
+                          accept=".jpg, .png, .jpeg"
+                          onChange={handleChange}
+                          type="file"
+                        />
+                      </div>
+                    </form>
+
+                    <div>
+                      {message && (
+                        <div>
+                          <p style={{ color: "green" }}>{message}</p>
+                          <Link href="/photos">
+                            <a style={{ border: "solid 1px teal", padding: 6 }}>
+                              Goto Photo Gallery
+                            </a>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <button type="button" onClick={handleImageUpload}>
-                    Upload
-                  </button>
+                <div className="col-sm-6 col-md-6">
+                  <div className="text-center">
+                    <Multiselect
+                      options={options} // Options to display in the dropdown
+                      selectedValues={selectedValues} // Preselected value to persist in dropdown
+                      onSelect={onSelect} // Function will trigger on select event
+                      onRemove={onRemove} // Function will trigger on remove event
+                      placeholder="+ Add Tags"
+                      isObject={false}
+                    />
+                    <div className="text-center">
+                      <button type="button" onClick={handleImageUpload}>
+                        Upload
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </form>
-              {message && <h4>{message}</h4>}
+              </div>
             </div>
           </div>
+
           <Footer />
         </div>
       </Layout>

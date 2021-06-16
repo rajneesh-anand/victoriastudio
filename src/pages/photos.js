@@ -44,22 +44,6 @@ export default function Photos() {
 
         <div className="main-content">
           <PortfolioContainer />
-
-          {/* <div className="container">
-            <div className="row">
-              {postDetail.map((post) => {
-                return (
-                  <div
-                    className="col-sm-6 col-md-4"
-                    key={post._id}
-                    data-aos="fade-up"
-                  >
-                    <img src={post.url} alt={post.resource} />
-                  </div>
-                );
-              })}
-            </div>
-          </div> */}
         </div>
         <Footer />
       </div>
