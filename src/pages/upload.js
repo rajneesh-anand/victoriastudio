@@ -10,7 +10,7 @@ const Upload = () => {
   const [selectedImage, setSelectedImage] = useState();
   const [message, setMessage] = useState();
   const [session, loading] = useSession();
-
+  const categories = ["featured", "new added"];
   const handleChange = (event) => {
     setSelectedImage(event.target.files[0]);
     setMessage(null);
@@ -23,6 +23,9 @@ const Upload = () => {
     }
     const formData = new FormData();
     formData.append("image", selectedImage);
+    formData.append("title", session.user.name);
+    formData.append("excerpt", "Nature People Fashion Sea");
+    formData.append("categories", JSON.stringify(categories));
 
     const result = await fetch(
       "https://nodappserver.herokuapp.com/api/upload",

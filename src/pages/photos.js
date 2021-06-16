@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import PortfolioContainer from "../containers/global/photos";
 import SEO from "../components/seo";
 import Footer from "../layouts/footer";
 import Header from "../layouts/header";
@@ -42,13 +43,23 @@ export default function Photos() {
         <Header />
 
         <div className="main-content">
-          <div style={{ display: "flex" }}>
-            {postDetail.map((post) => (
-              <div key={post._id} style={{ margin: 10 }}>
-                <img src={post.url} alt={post.resource} />
-              </div>
-            ))}
-          </div>
+          <PortfolioContainer />
+
+          {/* <div className="container">
+            <div className="row">
+              {postDetail.map((post) => {
+                return (
+                  <div
+                    className="col-sm-6 col-md-4"
+                    key={post._id}
+                    data-aos="fade-up"
+                  >
+                    <img src={post.url} alt={post.resource} />
+                  </div>
+                );
+              })}
+            </div>
+          </div> */}
         </div>
         <Footer />
       </div>
