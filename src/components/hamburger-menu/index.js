@@ -60,6 +60,11 @@ const HamburgerMenu = ({ show, onClose }) => {
                 <div className="text-center">
                   <p>{session.user.name}</p>
                 </div>
+                <div className="text-center">
+                  <Link href="/user/account">
+                    <a className="anchor-button">My Account</a>
+                  </Link>
+                </div>
               </>
             )}
             <hr />

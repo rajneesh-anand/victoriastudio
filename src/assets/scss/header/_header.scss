@@ -33,7 +33,7 @@
       position: fixed;
       left: 0;
       top: 0;
-      padding: 25px 0;
+      // padding: 25px 0;
       width: 100%;
       z-index: 99;
 
@@ -231,7 +231,7 @@
   // Header Default
   &.header-default {
     background-color: $white;
-    padding: 40px 0 35px;
+    padding: 10px 0 10px;
     position: relative;
     z-index: 999;
     @media #{$md-device} {
@@ -744,7 +744,7 @@
     .off-canvas-content {
       background-color: $black-111;
       height: 100%;
-      padding: 0 10px;
+      padding: 0 18px;
       position: relative;
       overflow-y: auto;
       transition: 0.4s;

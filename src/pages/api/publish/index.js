@@ -1,8 +1,9 @@
-import prisma from "../../lib/prisma";
+import prisma from "../../../lib/prisma";
 import { getSession } from "next-auth/client";
 
 export default async function handler(req, res) {
   const { title, category, content, slug } = req.body;
+  console.log(req.body);
 
   switch (req.method) {
     case "GET":
@@ -17,6 +18,7 @@ export default async function handler(req, res) {
             category: category,
             slug: slug,
             content: content,
+            published: true,
             tags: ["NEWS", "SPORTS", "TRAVEL"],
             author: { connect: { email: session?.user?.email } },
           },

@@ -1,4 +1,21 @@
 /* 05.05 Search Box CSS */
+.anchor-button {
+  border: solid 1px beige;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  color: rgb(212, 212, 202);
+  &-color {
+    border: solid 1px darkgreen;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    color: white;
+    background-color: teal;
+    margin: 5px;
+    &:hover {
+      color: thistle;
+    }
+  }
+}
 .text-center {
   text-align: center;
   margin: 8px;

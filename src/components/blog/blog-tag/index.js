@@ -1,11 +1,12 @@
 import Link from "next/link";
-import BlogData from "../../../data/blog.json";
+
 import { containsObject, flatDeep, slugify } from "../../../utils";
 
-const BlogTag = () => {
-  const tags = BlogData.map((item) => {
-    return item.tags;
-  });
+const BlogTag = ({ tags }) => {
+  console.log(tags);
+  // const tags = BlogData.map((item) => {
+  //   return item.tags;
+  // });
   let singleTagArray = flatDeep(tags);
   let allTags = [];
   singleTagArray.forEach((tag) => {
@@ -28,10 +29,10 @@ const BlogTag = () => {
       <span>Tags:</span>
       {allTags.map((tag, i) => {
         return (
-          <Link key={i} to={process.env.PUBLIC_URL + `/tag/${tag.slug}`}>
+          <div key={i}>
             {tag.title}
             {i !== allTags.length - 1 && ","}
-          </Link>
+          </div>
         );
       })}
     </div>
