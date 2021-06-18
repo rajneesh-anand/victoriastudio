@@ -36,10 +36,17 @@ const Drafts = ({ data }) => {
   const [session] = useSession();
   const blogData = JSON.parse(data);
 
+  function truncate(str, no_words) {
+    return str.split(" ").splice(0, no_words).join(" ");
+  }
+
   if (!session) {
     return (
       <Layout>
-        <SEO title="Victoria Studio - Drafts" />
+        <SEO
+          title="Drafts | Victoria Studio "
+          canonical={process.env.PUBLIC_URL + "/user/drafts"}
+        />
         <div className="wrapper home-default-wrapper">
           <Header classOption="hb-border" />
           <div className="main-content">
@@ -68,7 +75,7 @@ const Drafts = ({ data }) => {
                 <a className="anchor-button-color">Write New Blog</a>
               </Link>
               <Link href="/user/account">
-                <a className="anchor-button-color">Published</a>
+                <a className="anchor-button-color">Published Blog</a>
               </Link>
             </div>
           </div>

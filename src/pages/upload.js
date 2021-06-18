@@ -76,7 +76,10 @@ const Upload = () => {
     return (
       <React.Fragment>
         <Layout>
-          <SEO title="Victoria Studio | Upload" />
+          <SEO
+            title="Upload | Victoria Studio "
+            canonical={process.env.PUBLIC_URL + "/upload"}
+          />
           <div className="wrapper home-default-wrapper">
             <Header />
 

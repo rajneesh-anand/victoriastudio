@@ -18,11 +18,7 @@ const SEO = ({ title, description, canonical, css, js, image }) => (
       property="og:description"
       content={description}
     />
-    <meta
-      name="og:url"
-      property="og:url"
-      content="https://victoria-five.vercel.app"
-    />
+    <meta name="og:url" property="og:url" content={`${canonical}`} />
     <meta property="og:site_name" content="Victoria Studio" />
     <meta name="twitter:card" property="twitter:card" content="summary" />
     <meta name="twitter:title" property="twitter:title" content={title} />
@@ -43,6 +39,7 @@ const SEO = ({ title, description, canonical, css, js, image }) => (
     />
 
     <meta name="twitter:image" property="twitter:image" content="/og.png" />
+
     {canonical && <link rel="canonical" href={`${canonical}`} />}
     {js && <script type="text/javascript" src={`${js}`}></script>}
   </Head>

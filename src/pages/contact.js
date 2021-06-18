@@ -11,7 +11,10 @@ const Contact = () => {
   return (
     <React.Fragment>
       <Layout>
-        <SEO title="Contact Victoria Studio " />
+        <SEO
+          title="Contact | Victoria Studio "
+          canonical={process.env.PUBLIC_URL + "/contact"}
+        />
         <div className="wrapper home-default-wrapper">
           <Header classOption="hb-border" />
           <div className="main-content">

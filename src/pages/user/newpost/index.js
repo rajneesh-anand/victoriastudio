@@ -24,6 +24,7 @@ const Multiselect = dynamic(
 const Newpost = () => {
   const [selectedImage, setSelectedImage] = useState();
   const [html, setHtml] = useState("");
+  const [message, setMessage] = useState("");
   const [session, loading] = useSession();
   const [title, setTitle] = useState();
   const [tags, setTags] = useState([]);
@@ -39,6 +40,7 @@ const Newpost = () => {
     "Nature",
   ];
   const categoriesOptions = [
+    "New Added",
     "Yoga",
     "Spirituality",
     "Nature",
@@ -98,6 +100,9 @@ const Newpost = () => {
       );
       const resultJson = await result.json();
       console.log(resultJson);
+      if (resultJson.msg === "success") {
+        setMessage("Your Blog is drafted successfully");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -105,16 +110,22 @@ const Newpost = () => {
 
   const publishPost = async (e) => {
     e.preventDefault();
+    if (tags.length === 0) {
+      setTags(["News", "Sports", "Science", "Yoga", "People", "Nature"]);
+    }
+    if (categoriesOptions.length === 0) {
+      setCategories(["New Added"]);
+    }
     try {
       const formData = new FormData();
       formData.append("image", selectedImage);
-      formData.append("title", data.title);
+      formData.append("title", title);
       formData.append("categories", JSON.stringify(categories));
       formData.append("tags", JSON.stringify(tags));
-      formData.append("content", data.content);
+      formData.append("content", html);
       formData.append(
         "slug",
-        slugify(data.title, {
+        slugify(title, {
           remove: /[*+~.()'"!:@,]/g,
         })
       );
@@ -130,6 +141,9 @@ const Newpost = () => {
       );
       const resultJson = await result.json();
       console.log(resultJson);
+      if (resultJson.msg === "success") {
+        setMessage("Your Blog is published successfully");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -138,7 +152,10 @@ const Newpost = () => {
   if (!session) {
     return (
       <Layout>
-        <SEO title="Victoria Studio - Blog" />
+        <SEO
+          title="New Blog | Victoria Studio "
+          canonical={process.env.PUBLIC_URL + "/user/newpost"}
+        />
         <div className="wrapper home-default-wrapper">
           <Header classOption="hb-border" />
           <div className="main-content">
@@ -158,82 +175,104 @@ const Newpost = () => {
 
   return (
     <Layout>
-      <SEO title="Victoria Studio - Blog" />
+      <SEO
+        title="New Blog | Victoria Studio "
+        canonical={process.env.PUBLIC_URL + "/user/newpost"}
+      />
       <div className="wrapper home-default-wrapper">
         <Header classOption="hb-border" />
         <div className="main-content">
           <div className="container">
-            <div className="row">
-              <div className="col-sm-6 col-md-6 col-lg-4">
-                <div className="text-center-black">
-                  <p>SELECT BLOG THUMBNAIL IMAGE</p>
-                </div>
-                <div className="img-style">
-                  <img
-                    src={
-                      selectedImage ? URL.createObjectURL(selectedImage) : null
-                    }
-                    alt={selectedImage ? selectedImage.name : null}
-                    height={280}
-                  />
-
-                  <form>
-                    <input
-                      accept=".jpg, .png, .jpeg"
-                      onChange={handleChange}
-                      type="file"
+            {message === "" ? (
+              <div className="row">
+                <div className="col-sm-6 col-md-6 col-lg-4">
+                  <div className="text-center-black">
+                    <p>SELECT BLOG THUMBNAIL IMAGE</p>
+                  </div>
+                  <div className="img-style">
+                    <img
+                      src={
+                        selectedImage
+                          ? URL.createObjectURL(selectedImage)
+                          : null
+                      }
+                      alt={selectedImage ? selectedImage.name : null}
+                      height={280}
                     />
-                  </form>
-                </div>
-                <div className="text-center-black">
-                  <p>SELECT BLOG CATEGORY</p>
-                </div>
-                <Multiselect
-                  options={categoriesOptions} // Options to display in the dropdown
-                  selectedValues={catSelectedValues} // Preselected value to persist in dropdown
-                  onSelect={onCatSelect} // Function will trigger on select event
-                  onRemove={onCatRemove} // Function will trigger on remove event
-                  placeholder="+ Add Categories"
-                  isObject={false}
-                />
-                <div className="text-center-black">
-                  <p>SELECT BLOG TAGS</p>
-                </div>
-                <Multiselect
-                  options={tagsOptions} // Options to display in the dropdown
-                  selectedValues={tagSelectedValues} // Preselected value to persist in dropdown
-                  onSelect={onTagSelect} // Function will trigger on select event
-                  onRemove={onTagRemove} // Function will trigger on remove event
-                  placeholder="+ Add Tags"
-                  isObject={false}
-                />
-              </div>
-              <div className="col-sm-6 col-md-6 col-lg-8">
-                <div className="img-style">
-                  <input
-                    type="text"
-                    name="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Blog Title ..."
+
+                    <form>
+                      <input
+                        accept=".jpg, .png, .jpeg"
+                        onChange={handleChange}
+                        type="file"
+                        required
+                      />
+                    </form>
+                  </div>
+                  <div className="text-center-black">
+                    <p>SELECT BLOG CATEGORY</p>
+                  </div>
+                  <Multiselect
+                    options={categoriesOptions} // Options to display in the dropdown
+                    selectedValues={catSelectedValues} // Preselected value to persist in dropdown
+                    onSelect={onCatSelect} // Function will trigger on select event
+                    onRemove={onCatRemove} // Function will trigger on remove event
+                    placeholder="+ Add Categories"
+                    id="catOption"
+                    isObject={false}
+                  />
+                  <div className="text-center-black">
+                    <p>SELECT BLOG TAGS</p>
+                  </div>
+                  <Multiselect
+                    options={tagsOptions} // Options to display in the dropdown
+                    selectedValues={tagSelectedValues} // Preselected value to persist in dropdown
+                    onSelect={onTagSelect} // Function will trigger on select event
+                    onRemove={onTagRemove} // Function will trigger on remove event
+                    placeholder="+ Add Tags"
+                    id="tagOption"
+                    isObject={false}
                   />
                 </div>
-                <SunEditor
-                  height="60vh"
-                  setDefaultStyle="font-family: cursive; font-size: 18px;"
-                  placeholder="Write your content here ...."
-                  onChange={handleEditorChange}
-                />
-                <div style={{ justifyContent: "flex-end" }}>
-                  <button className="blue-button" onClick={draftPost}>
-                    Draft
-                  </button>
-                  <button className="blue-button" onClick={publishPost}>
-                    Publish
-                  </button>
+                <div className="col-sm-6 col-md-6 col-lg-8">
+                  <div className="img-style">
+                    <input
+                      type="text"
+                      name="title"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                      placeholder="Blog Title ..."
+                      required
+                    />
+                  </div>
+                  <SunEditor
+                    height="60vh"
+                    setDefaultStyle="font-family: cursive; font-size: 18px;"
+                    placeholder="Write your content here ...."
+                    onChange={handleEditorChange}
+                    required
+                  />
+                  <div style={{ justifyContent: "flex-end" }}>
+                    <button className="blue-button" onClick={draftPost}>
+                      Draft
+                    </button>
+                    <button className="blue-button" onClick={publishPost}>
+                      Publish
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="text-center-black">
+                <p>{message}</p>
+                <button className="blue-button" onClick={() => setMessage("")}>
+                  New Blog
+                </button>
+                <Link href="/blogs">
+                  <a className="blue-button">Goto Blogs Page</a>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
         <Footer />

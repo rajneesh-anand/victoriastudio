@@ -24,7 +24,10 @@ export default function Photos() {
 
   return loading ? (
     <Layout>
-      <SEO title="Victoria Studio | Photo Gallery" />
+      <SEO
+        title="Photo Gallery | Victoria Studio "
+        canonical={process.env.PUBLIC_URL + "/photos"}
+      />
       <div className="wrapper home-default-wrapper">
         <Header />
 

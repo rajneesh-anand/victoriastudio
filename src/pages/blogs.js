@@ -11,7 +11,10 @@ const Blogs = () => {
   return (
     <React.Fragment>
       <Layout>
-        <SEO title="Victoria Studio | Blog" />
+        <SEO
+          title="Blog | Victoria Studio "
+          canonical={process.env.PUBLIC_URL + "/blogs"}
+        />
         <div className="wrapper home-default-wrapper">
           <Header classOption="hb-border" />
           <div className="main-content">

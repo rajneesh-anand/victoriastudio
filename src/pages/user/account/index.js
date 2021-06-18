@@ -39,7 +39,10 @@ const Account = ({ data }) => {
   if (!session) {
     return (
       <Layout>
-        <SEO title="Victoria Studio - Account" />
+        <SEO
+          title="My Account | Victoria Studio "
+          canonical={process.env.PUBLIC_URL + "/user/account"}
+        />
         <div className="wrapper home-default-wrapper">
           <Header classOption="hb-border" />
           <div className="main-content">
@@ -58,7 +61,10 @@ const Account = ({ data }) => {
   }
   return (
     <Layout>
-      <SEO title="Victoria Studio - Account" />
+      <SEO
+        title="My Account | Victoria Studio "
+        canonical={process.env.PUBLIC_URL + "/user/account"}
+      />
       <div className="wrapper home-default-wrapper">
         <Header classOption="hb-border" />
         <div className="main-content">

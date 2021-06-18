@@ -18,7 +18,10 @@ const BlogDetails = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={result.title} />
+      <SEO
+        title={result.title}
+        canonical={`${process.env.PUBLIC_URL}/read/${result.slug}`}
+      />
       <div className="wrapper home-default-wrapper">
         <Header classOption="hb-border" />
         <div className="main-content">
