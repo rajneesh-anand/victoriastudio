@@ -6,10 +6,6 @@ import { slugify } from "../../../utils";
 const BlogCard = ({ data }) => {
   console.log(data);
 
-  const truncate = (str, no_words) => {
-    return str.split(" ").splice(0, no_words).join(" ");
-  };
-
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);

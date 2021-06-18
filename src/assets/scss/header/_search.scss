@@ -1,4 +1,12 @@
 /* 05.05 Search Box CSS */
+.screen-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
 .anchor-button {
   border: solid 1px beige;
   text-transform: uppercase;

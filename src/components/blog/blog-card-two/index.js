@@ -8,9 +8,9 @@ const BlogCardTwo = ({ data }) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
-  const truncate = (str, no_words) => {
-    return str.split(" ").splice(0, no_words).join(" ");
-  };
+  // const truncate = (str, no_words) => {
+  //   return str.split(" ").splice(0, no_words).join(" ");
+  // };
 
   const unpublishBlog = async (id) => {
     await fetch(`https://nodappserver.herokuapp.com/api/publish/${id}/false`, {
@@ -25,7 +25,7 @@ const BlogCardTwo = ({ data }) => {
         <img src={data.image} />
         <h4>{data.title}</h4>
         <h6>{formatDate(data.createdAt)}</h6>
-        <p>{truncate(htmr(data.content, 20))}</p>
+        {/* <p>{truncate(htmr(data.content), 10)}</p> */}
         <div className="text-center" style={{ display: "flex" }}>
           <button
             className="blue-button"
