@@ -42,7 +42,7 @@ const BlogContainer = () => {
           </div>
         </div>
         <div className="row masonryGrid post-items-style1">
-          <div className="col-sm-6 col-md-6 col-lg-4 resizer"></div>
+          {/* <div className="col-sm-6 col-md-6 col-lg-3 resizer"></div> */}
           {BlogData &&
             BlogData.map((blog) => (
               <div
@@ -50,6 +50,7 @@ const BlogContainer = () => {
                 className={`col-sm-6 col-md-6 col-lg-4 masonry-item ${blog.categories
                   .map((cat) => slugify(cat))
                   .join(" ")}`}
+                  style={{marginTop:"10px"}}
               >
                 <BlogCard data={blog} />
               </div>

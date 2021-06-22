@@ -104,6 +104,11 @@ const HamburgerMenu = ({ show, onClose }) => {
                     <a>About</a>
                   </Link>
                 </li>
+                 <li>
+                  <Link href="/blogs">
+                    <a>Blogs</a>
+                  </Link>
+                </li>
                 <li>
                   <Link href="/contact">
                     <a>Contact</a>

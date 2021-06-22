@@ -1024,4 +1024,10 @@
   margin: 5px 8px;
   padding: 5px 10px;
   display: inline-block;
+  &:hover{
+    cursor: pointer;
+      background-color: #ffffff;
+  color: #002e5b;
+  border: 1px solid teal;
+  }
 }
