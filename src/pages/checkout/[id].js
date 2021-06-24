@@ -14,6 +14,7 @@ const StripeCheckout = ({ data }) => {
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
   );
   const result = JSON.parse(data);
+  console.log(result);
   const [session] = useSession();
 
   if (!session) {
@@ -64,16 +65,16 @@ const StripeCheckout = ({ data }) => {
   );
 };
 
-export async function getServerSideProps({ params, req, res }) {
+export async function getStaticProps({ params }) {
   try {
-    const { pid } = params;
+    const { id } = params;
 
     const product = await prisma.product.findUnique({
       where: {
-        id: Number(pid),
+        id: Number(id),
       },
     });
-    console.log(product);
+
     return {
       props: { data: JSON.stringify(product) },
     };
