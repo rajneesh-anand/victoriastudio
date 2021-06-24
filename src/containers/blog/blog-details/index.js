@@ -103,7 +103,7 @@ const BlogDetailsContainer = ({ data }) => {
             <h4 className="title">Leave a comment</h4>
             <div className="comment-form-wrap">
               <Comment
-                url={`${process.env.PUBLIC_URL}/read/${data.id}/${data.slug}`}
+                url={`https://vic.vercel.app/read/${data.id}/${data.slug}`}
                 id={data.id}
                 title={data.title}
               />
