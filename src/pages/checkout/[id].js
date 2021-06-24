@@ -66,10 +66,10 @@ const StripeCheckout = ({ data }) => {
 };
 
 export async function getStaticPaths() {
-  const products = await prisma.product.findMany({});
+  const products = await prisma.product.findMany();
 
   const paths = products.map((product) => ({
-    params: { id: product.id },
+    params: { id: product.id.toString() },
   }));
 
   // fallback: false means pages that don’t have the
