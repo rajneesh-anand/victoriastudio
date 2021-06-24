@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import slugify from "slugify";
 import SEO from "../../../components/seo";
@@ -8,10 +8,11 @@ import Layout from "../../../layouts";
 import ScrollToTop from "../../../components/scroll-to-top";
 import { useSession } from "next-auth/client";
 import dynamic from "next/dynamic";
+import SunEditor, { buttonList } from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
-const SunEditor = dynamic(() => import("suneditor-react"), {
-  ssr: false,
-});
+// const SunEditor = dynamic(() => import("suneditor-react"), {
+//   ssr: false,
+// });
 
 const Multiselect = dynamic(
   () =>
@@ -250,7 +251,9 @@ const Newpost = () => {
                     setDefaultStyle="font-family: cursive; font-size: 18px;"
                     placeholder="Write your content here ...."
                     onChange={handleEditorChange}
-                    required
+                    setOptions={{
+                      buttonList: buttonList.complex,
+                    }}
                   />
                   <div style={{ justifyContent: "flex-end" }}>
                     <button className="blue-button" onClick={draftPost}>

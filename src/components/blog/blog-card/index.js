@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import htmr from "htmr";
+import { useSession } from "next-auth/client";
 
 import { slugify } from "../../../utils";
 
 const BlogCard = ({ data }) => {
+  const [session] = useSession();
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -47,20 +49,23 @@ const BlogCard = ({ data }) => {
               <div className="media">
                 <img
                   className="mr-3 rounded-circle"
-                  src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/male-512.png"
-                  alt="Generic placeholder image"
+                  src={session.user.image}
+                  alt="profile image"
                   style={{ maxWidth: "50px" }}
                 />
-                <div className="media-body">
+                <div
+                  className="media-body"
+                  style={{ paddingTop: "6px", paddingLeft: "5px" }}
+                >
                   <h6 className="my-0 text-white d-block">
                     {data.author.name}
                   </h6>
                   <small className="my-0 text-dark d-block">
-                    Author / Blogger{" "}
+                    Author | Blogger{" "}
                   </small>
                 </div>
               </div>
-              <a className="blue-button">Read..</a>
+              <a className="blue-button">Read More</a>
             </div>
           </div>
         </Link>

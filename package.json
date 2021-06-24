@@ -38,7 +38,7 @@
     "slugify": "^1.5.3",
     "stripe": "^8.156.0",
     "suneditor": "^2.40.0",
-    "suneditor-react": "^3.1.2",
+    "suneditor-react": "^2.15.2",
     "swiper": "^6.7.0"
   },
   "devDependencies": {

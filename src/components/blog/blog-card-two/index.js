@@ -23,8 +23,8 @@ const BlogCardTwo = ({ data }) => {
     <div className="index-content">
       <div className="card">
         <img src={data.image} />
-        <h4>{data.title}</h4>
-        <h6>{formatDate(data.createdAt)}</h6>
+        <p>{data.title}</p>
+        <p>{formatDate(data.createdAt)}</p>
         {/* <p>{truncate(htmr(data.content), 10)}</p> */}
         <div className="text-center" style={{ display: "flex" }}>
           <button
