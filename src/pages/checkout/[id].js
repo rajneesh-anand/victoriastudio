@@ -71,7 +71,7 @@ export async function getServerSideProps({ params, req, res }) {
 
     const post = await prisma.product.findFirst({
       where: {
-        id: Number(id),
+        id: parseInt(id),
       },
     });
     console.log(post);
