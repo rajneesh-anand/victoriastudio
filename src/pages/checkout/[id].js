@@ -65,30 +65,18 @@ const StripeCheckout = ({ data }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const products = await prisma.product.findMany();
-
-  const paths = products.map((product) => ({
-    params: { id: product.id.toString() },
-  }));
-
-  // fallback: false means pages that don’t have the
-  // correct id will 404.
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params, req, res }) {
   try {
     const { id } = params;
 
-    const product = await prisma.product.findUnique({
+    const post = await prisma.product.findFirst({
       where: {
         id: Number(id),
       },
     });
-
+    console.log(post);
     return {
-      props: { data: JSON.stringify(product) },
+      props: { data: JSON.stringify(post) },
     };
   } catch (error) {
     console.log(error);

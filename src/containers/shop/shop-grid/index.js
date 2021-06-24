@@ -10,6 +10,7 @@ const ShopContainer = () => {
   const [loading, setLoading] = useState(true);
 
   // "https://nodappserver.herokuapp.com/api/upload"
+  // http://localhost:8080
 
   useEffect(async () => {
     const res = await fetch("https://nodappserver.herokuapp.com/api/product");
