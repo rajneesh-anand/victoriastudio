@@ -768,6 +768,19 @@ iframe {
   }
 }
 
+.hv-center {
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // margin-right: -50%;
+  // transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  flex-direction: column;
+}
 /*-------- Pagination Style Css --------*/
 
 .pagination-area {

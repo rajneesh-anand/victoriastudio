@@ -11,21 +11,35 @@ import Header from "../../layouts/header";
 import Layout from "../../layouts";
 import ScrollToTop from "../../components/scroll-to-top";
 
-import { useSession, getSession } from "next-auth/client";
-
 const BlogDetails = ({ data }) => {
   const result = JSON.parse(data);
 
-  return (
+  return result ? (
     <Layout>
       <SEO
         title={result.title}
-        canonical={`${process.env.PUBLIC_URL}/read/${result.slug}`}
+        canonical={process.env.PUBLIC_URL + `/read/${result.id}/${result.slug}`}
       />
       <div className="wrapper home-default-wrapper">
         <Header classOption="hb-border" />
         <div className="main-content">
-          <BlogDetailsContainer data={result} />
+          <div className="container">
+            <BlogDetailsContainer data={result} />
+          </div>
+        </div>
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </Layout>
+  ) : (
+    <Layout>
+      <SEO title="Blog link broken" canonical={process.env.PUBLIC_URL} />
+      <div className="wrapper home-default-wrapper">
+        <Header classOption="hb-border" />
+        <div className="main-content">
+          <div className="container">
+            <p>Nothing Here ...</p>
+          </div>
         </div>
         <Footer />
         <ScrollToTop />
@@ -43,17 +57,17 @@ BlogDetails.propTypes = {
 };
 
 export async function getServerSideProps({ params, req, res }) {
-  const session = await getSession({ req });
-  if (!session) {
-    res.statusCode = 403;
-    return { props: { post: {} } };
-  }
   try {
-    const { slug } = params;
-    console.log(slug);
+    const { id } = params;
+
     const post = await prisma.post.findFirst({
       where: {
-        slug: slug,
+        AND: [
+          {
+            id: Number(id[0]),
+            slug: id[1],
+          },
+        ],
       },
       include: {
         author: {

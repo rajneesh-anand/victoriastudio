@@ -39,7 +39,7 @@ export default function SignIn({ csrfToken }) {
                   <a
                     onClick={() =>
                       signIn("google", {
-                        callbackUrl: "https://victoria-five.vercel.app",
+                        callbackUrl: "https://vic.vercel.app/",
                       })
                     }
                   >
@@ -54,7 +54,7 @@ export default function SignIn({ csrfToken }) {
                   <a
                     onClick={() =>
                       signIn("facebook", {
-                        callbackUrl: "http://localhost:3000",
+                        callbackUrl: "https://vic.vercel.app/",
                       })
                     }
                   >

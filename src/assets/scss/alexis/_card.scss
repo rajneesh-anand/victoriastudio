@@ -11,12 +11,12 @@
   min-height: 350px;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
 
-  @media (max-width: 768px) {
+  @media #{$xs-device} {
     min-height: 350px;
   }
 
-  @media (max-width: 420px) {
-    min-height: 300px;
+  @media #{$xxs-device} {
+    min-height: 350px;
   }
 
   &:hover {

@@ -30,8 +30,10 @@ const BlogContainer = () => {
     ".blog-filter-menu button"
   );
   return loading ? (
-    <div className="text-center">
-      <h4>Loading.....</h4>
+    <div className="hv-center">
+      <div className="spinner-border text-primary" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
     </div>
   ) : (
     <div className="blog-area blog-masonry-area">
@@ -50,7 +52,7 @@ const BlogContainer = () => {
                 className={`col-sm-6 col-md-6 col-lg-4 masonry-item ${blog.categories
                   .map((cat) => slugify(cat))
                   .join(" ")}`}
-                  style={{marginTop:"10px"}}
+                style={{ marginTop: "10px" }}
               >
                 <BlogCard data={blog} />
               </div>

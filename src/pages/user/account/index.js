@@ -69,16 +69,30 @@ const Account = ({ data }) => {
         <Header classOption="hb-border" />
         <div className="main-content">
           <div className="container">
-            <div style={{ paddingTop: 10 }}>
-              <Link href="/user/newpost">
-                <a className="anchor-button-color">Write New Blog</a>
-              </Link>
-              <Link href="/user/drafts">
-                <a className="anchor-button-color">Drafts</a>
-              </Link>
+            <div className="row anchorList">
+              <div className="col-6 col-md-3 buttonCol">
+                <Link href="/user/newpost">
+                  <a>Write New Blog</a>
+                </Link>
+              </div>
+              <div className="col-6 col-md-3 buttonCol">
+                <Link href="/user/drafts">
+                  <a>Drafts List</a>
+                </Link>
+              </div>
+              <div className="col-6 col-md-3 buttonCol">
+                <Link href="/user/upload">
+                  <a>Upload Photo</a>
+                </Link>
+              </div>
+              <div className="col-6 col-md-3 buttonCol">
+                <Link href="/user/product">
+                  <a>Upload Product</a>
+                </Link>
+              </div>
             </div>
           </div>
-
+          <hr />
           <BlogContainerTwo data={blogData} />
         </div>
         <Footer />
