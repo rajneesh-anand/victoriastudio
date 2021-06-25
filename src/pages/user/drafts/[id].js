@@ -9,10 +9,12 @@ import Layout from "../../../layouts";
 import ScrollToTop from "../../../components/scroll-to-top";
 import htmr from "htmr";
 import dynamic from "next/dynamic";
+import SunEditor, { buttonList } from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
-const SunEditor = dynamic(() => import("suneditor-react"), {
-  ssr: false,
-});
+
+// const SunEditor = dynamic(() => import("suneditor-react"), {
+//   ssr: false,
+// });
 
 const Multiselect = dynamic(
   () =>
@@ -48,9 +50,19 @@ function SinglePostForEdit({ post }) {
     "Yoga",
     "People",
     "Nature",
+    "City",
+    "Jobs",
+    "Travel",
+    "Fashion",
+    "Mobile",
   ];
   const categoriesOptions = [
     "New Added",
+    "Travel",
+    "Jobs",
+    "Sports",
+    "Technology",
+    "Mobile",
     "Yoga",
     "Spirituality",
     "Nature",
@@ -268,6 +280,9 @@ function SinglePostForEdit({ post }) {
                     placeholder="Write your content here ...."
                     onChange={handleEditorChange}
                     defaultValue={data.content}
+                    setOptions={{
+                      buttonList: buttonList.complex,
+                    }}
                     required
                   />
                   <div style={{ justifyContent: "flex-end" }}>

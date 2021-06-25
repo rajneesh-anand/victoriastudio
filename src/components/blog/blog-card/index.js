@@ -51,18 +51,18 @@ const BlogCard = ({ data }) => {
                   className="mr-3 rounded-circle"
                   src={data.author.image}
                   alt="profile image"
-                  style={{ maxWidth: "50px" }}
+                  style={{ width: "32px", height: "32px" }}
                 />
                 <div
                   className="media-body"
-                  style={{ paddingTop: "6px", paddingLeft: "5px" }}
+                  style={{
+                    paddingTop: "6px",
+                    paddingLeft: "5px",
+                    fontSize: "12px",
+                  }}
                 >
-                  <h6 className="my-0 text-white d-block">
-                    {data.author.name}
-                  </h6>
-                  <small className="my-0 text-dark d-block">
-                    Author | Blogger{" "}
-                  </small>
+                  <p className="my-0 text-white d-block">{data.author.name}</p>
+                  <p className="my-0 text-dark d-block">Author | Blogger </p>
                 </div>
               </div>
               <a className="blue-button">Read More</a>
