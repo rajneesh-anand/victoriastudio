@@ -56,7 +56,7 @@ const BlogDetailsContainer = ({ data }) => {
           <div className="content">
             <div className="blog-title">{data.title}</div>
             <div className="blog-content"> {htmr(data.content)} </div>
-            <div className="meta">{data.author.name}</div>
+            {/* <div className="meta">{data.author.name}</div> */}
             {/* <div className="meta">{formatDate(data.createdAt)}</div> */}
           </div>
 

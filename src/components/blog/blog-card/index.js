@@ -42,7 +42,7 @@ const BlogCard = ({ data }) => {
           <div className="card-img-overlay">
             <div className="blog-title">{data.title}</div>
             <hr style={{ color: "antiquewhite" }} />
-            <div className="blog-content">{truncate(data.content, 20)}</div>
+            <div className="blog-content">{truncate(data.content, 35)}</div>
             <div> {formatDate(data.createdAt)}</div>
 
             <div className="card-footer">
@@ -51,12 +51,11 @@ const BlogCard = ({ data }) => {
                   className="mr-3 rounded-circle"
                   src={data.author.image}
                   alt="profile image"
-                  style={{ width: "32px", height: "32px" }}
+                  style={{ width: "40px", height: "40px" }}
                 />
                 <div
                   className="media-body"
                   style={{
-                    paddingTop: "6px",
                     paddingLeft: "5px",
                     fontSize: "12px",
                   }}
