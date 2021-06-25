@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import SEO from "../components/seo";
-import Footer from "../layouts/footer";
-import Header from "../layouts/header";
-import Layout from "../layouts";
+import SEO from "../../components/seo";
+import Footer from "../../layouts/footer";
+import Header from "../../layouts/header";
+import Layout from "../../layouts";
 import { useSession } from "next-auth/client";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -14,7 +14,7 @@ const Multiselect = dynamic(
   }
 );
 
-const Upload = () => {
+const UploadPage = () => {
   const [selectedImage, setSelectedImage] = useState();
   const [message, setMessage] = useState();
   const [session, loading] = useSession();
@@ -172,4 +172,4 @@ const Upload = () => {
   );
 };
 
-export default Upload;
+export default UploadPage;

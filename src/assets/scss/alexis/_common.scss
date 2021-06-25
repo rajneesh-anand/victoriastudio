@@ -2693,3 +2693,20 @@ iframe {
     }
   }
 }
+
+.sun-editor {
+  .se-toolbar{
+      z-index:0 !important
+  }
+  .se-btn-module-enter{
+    display:none !important
+  }
+  
+}
+
+.signout{
+ padding: 4px 12px;
+    background-color: #111111;
+    color: antiquewhite;
+    border: solid 1px white;
+}

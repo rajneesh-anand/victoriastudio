@@ -1,5 +1,7 @@
 import { Provider } from "next-auth/client";
 import { useEffect } from "react";
+import { useRouter } from 'next/router'
+import * as ga from "../lib/ga"
 import AOS from "aos";
 // CSS
 import "aos/dist/aos.css";
@@ -15,7 +17,10 @@ import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.scss";
 
 const App = ({ Component, pageProps }) => {
+   const router = useRouter()
+
   useEffect(() => {
+
     AOS.init({
       offset: 80,
       duration: 1000,
@@ -23,7 +28,19 @@ const App = ({ Component, pageProps }) => {
       easing: "ease",
     });
     AOS.refresh();
-  }, []);
+
+
+    const handleRouteChange = (url) => {
+      ga.pageview(url)
+    }
+    
+    router.events.on('routeChangeComplete', handleRouteChange)   
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events]);
+
+  
   return (
     <Provider session={pageProps.session}>
       <Component {...pageProps} />

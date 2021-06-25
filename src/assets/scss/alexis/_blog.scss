@@ -246,20 +246,20 @@
 }
 
 .blog-details-area {
-  padding: 16px 0 100px;
+  padding: 16px 0 50px;
   position: relative;
   @media #{$md-device} {
-    padding: 80px 0 80px;
+    padding: 16px 0 50px;
   }
   @media #{$sm-device} {
-    margin: 0 30px;
-    padding: 60px 0 60px;
+    margin: 0 16px;
+    padding: 16px 0 50px;
   }
   @media #{$xs-device} {
-    margin: 0 15px;
+    margin: 0 8px;
   }
   @media #{$xxs-device} {
-    padding: 30px 0 80px;
+    padding: 8px 0 50px;
   }
   .blog-navigation {
     color: $black;

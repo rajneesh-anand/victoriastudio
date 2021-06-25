@@ -49,7 +49,7 @@ const BlogCard = ({ data }) => {
               <div className="media">
                 <img
                   className="mr-3 rounded-circle"
-                  src={session.user.image}
+                  src={data.author.image}
                   alt="profile image"
                   style={{ maxWidth: "50px" }}
                 />

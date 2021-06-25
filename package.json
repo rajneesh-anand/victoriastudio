@@ -20,6 +20,7 @@
     "datauri": "^3.0.0",
     "disqus-react": "^1.0.11",
     "formidable": "^1.2.2",
+    "fs": "0.0.1-security",
     "htmr": "^1.0.0",
     "imagesloaded": "^4.1.4",
     "multiselect-react-dropdown": "^1.6.13",

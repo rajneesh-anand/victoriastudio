@@ -235,10 +235,10 @@
     position: relative;
     z-index: 999;
     @media #{$md-device} {
-      padding: 20px 0 20px;
+      padding: 8px 0 8px;
     }
     @media #{$sm-device} {
-      padding: 30px 0 20px;
+      padding: 8px 0 8px;
     }
     .container-fluid {
       padding-left: 60px;
@@ -337,10 +337,10 @@
       &.sticky {
         background-color: $white !important;
         @media #{$sm-device} {
-          padding: 22px 0 27px;
+          padding: 8px 0 8px;
         }
         @media #{$xs-device} {
-          padding: 17px 0 22px;
+          padding: 8px 0 8px;
         }
         .header-align {
           .header-social {

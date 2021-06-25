@@ -1,11 +1,11 @@
 import React from "react";
-import BlogContainer from "../containers/blog/blog-grid";
-import PageTitleContainerTwo from "../containers/global/page-title-two";
-import ScrollToTop from "../components/scroll-to-top";
-import SEO from "../components/seo";
-import Footer from "../layouts/footer";
-import Header from "../layouts/header";
-import Layout from "../layouts";
+import BlogContainer from "../../containers/blog/blog-grid";
+import PageTitleContainerTwo from "../../containers/global/page-title-two";
+import ScrollToTop from "../../components/scroll-to-top";
+import SEO from "../../components/seo";
+import Footer from "../../layouts/footer";
+import Header from "../../layouts/header";
+import Layout from "../../layouts";
 
 const Blogs = () => {
   return (

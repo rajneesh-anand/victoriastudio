@@ -21,11 +21,9 @@ const PortfolioItem = ({ portfolio }) => {
         </LightgalleryItem>
       </LightgalleryProvider>
       <div className="content">
-        <h3 className="title">
-          <Link
-            href={process.env.PUBLIC_URL + `/portfolio-details/${portfolio.id}`}
-          >
-            <a>{portfolio.title}</a>
+      <h3 className="title">
+          <Link href={process.env.PUBLIC_URL + `/portfolio-details/${portfolio.id}`} >
+            <a >{portfolio.title}</a>
           </Link>
         </h3>
         <p className="desc">{portfolio.excerpt}</p>

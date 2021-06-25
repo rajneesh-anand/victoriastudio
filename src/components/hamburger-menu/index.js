@@ -134,7 +134,7 @@ const HamburgerMenu = ({ show, onClose }) => {
                       </Link>
                     </li>
                     <li>
-                      <button onClick={() => signOut()}>Sign Out</button>
+                      <button className="signout" onClick={() => signOut()}>Sign Out</button>
                     </li>
                   </>
                 )}

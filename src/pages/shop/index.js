@@ -1,13 +1,13 @@
 import React from "react";
-import ShopContainer from "../containers/shop/shop-grid";
+import ShopContainer from "../../containers/shop/shop-grid";
 // import PageTitleContainerTwo from "../containers/global/page-title-two";
-import ScrollToTop from "../components/scroll-to-top";
-import SEO from "../components/seo";
-import Footer from "../layouts/footer";
-import Header from "../layouts/header";
-import Layout from "../layouts";
+import ScrollToTop from "../../components/scroll-to-top";
+import SEO from "../../components/seo";
+import Footer from "../../layouts/footer";
+import Header from "../../layouts/header";
+import Layout from "../../layouts";
 
-const Blogs = () => {
+const ShopPage = () => {
   return (
     <React.Fragment>
       <Layout>
@@ -34,4 +34,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default ShopPage;

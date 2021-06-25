@@ -59,6 +59,7 @@ BlogDetails.propTypes = {
 export async function getServerSideProps({ params, req, res }) {
   try {
     const { id } = params;
+   
 
     const post = await prisma.post.findFirst({
       where: {
