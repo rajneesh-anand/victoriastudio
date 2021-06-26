@@ -114,6 +114,7 @@ function SinglePostForEdit({ post }) {
         "slug",
         slugify(data.title, {
           remove: /[*+~.()'"!:@,]/g,
+          lower: true,
         })
       );
       formData.append("published", false);

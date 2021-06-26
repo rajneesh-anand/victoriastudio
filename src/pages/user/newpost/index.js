@@ -99,6 +99,7 @@ const Newpost = () => {
         "slug",
         slugify(title, {
           remove: /[*+~.()'"!:@,]/g,
+          lower: true,
         })
       );
       formData.append("published", false);

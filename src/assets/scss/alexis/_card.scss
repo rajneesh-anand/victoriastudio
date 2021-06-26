@@ -92,6 +92,14 @@
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   width: 100%;
+
+  @media #{$xs-device} {
+    margin: 0px;
+  }
+
+  @media #{$xxs-device} {
+    margin: 0px;
+  }
 }
 .card-header img {
   width: 100%;
