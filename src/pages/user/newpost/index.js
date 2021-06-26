@@ -30,6 +30,7 @@ const Newpost = () => {
   const [title, setTitle] = useState();
   const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [isProcessing, setProcessingTo] = useState(false);
 
   const tagsOptions = [
     "Spirituality",
@@ -86,6 +87,7 @@ const Newpost = () => {
 
   const draftPost = async (e) => {
     e.preventDefault();
+    setProcessingTo(true);
     try {
       const formData = new FormData();
       formData.append("image", selectedImage);
@@ -110,8 +112,9 @@ const Newpost = () => {
         }
       );
       const resultJson = await result.json();
-      console.log(resultJson);
+      // console.log(resultJson);
       if (resultJson.msg === "success") {
+        setProcessingTo(false);
         setMessage("Your Blog is drafted successfully");
       }
     } catch (error) {
@@ -121,6 +124,7 @@ const Newpost = () => {
 
   const publishPost = async (e) => {
     e.preventDefault();
+    setProcessingTo(true);
     if (tags.length === 0) {
       setTags(["News", "Sports", "Science", "Yoga", "People", "Nature"]);
     }
@@ -151,8 +155,9 @@ const Newpost = () => {
         }
       );
       const resultJson = await result.json();
-      console.log(resultJson);
+      // console.log(resultJson);
       if (resultJson.msg === "success") {
+        setProcessingTo(false);
         setMessage("Your Blog is published successfully");
       }
     } catch (error) {
@@ -231,6 +236,7 @@ const Newpost = () => {
                     placeholder="+ Add Categories"
                     id="catOption"
                     isObject={false}
+                    className="catDrowpdown"
                   />
                   <div className="text-center-black">
                     <p>SELECT BLOG TAGS</p>
@@ -243,6 +249,7 @@ const Newpost = () => {
                     placeholder="+ Add Tags"
                     id="tagOption"
                     isObject={false}
+                    className="tagDrowpdown"
                   />
                 </div>
                 <div className="col-sm-6 col-md-6 col-lg-8">
@@ -258,7 +265,7 @@ const Newpost = () => {
                   </div>
                   <SunEditor
                     height="60vh"
-                    setDefaultStyle="font-family: cursive; font-size: 18px;"
+                    setDefaultStyle="font-family: Arial; font-size: 16px;"
                     placeholder="Write your content here ...."
                     onChange={handleEditorChange}
                     setOptions={{
@@ -270,7 +277,7 @@ const Newpost = () => {
                       Draft
                     </button>
                     <button className="blue-button" onClick={publishPost}>
-                      Publish
+                      {isProcessing ? "Publishing ..." : `Publish`}
                     </button>
                   </div>
                 </div>

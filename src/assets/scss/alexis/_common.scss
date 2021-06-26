@@ -2695,18 +2695,23 @@ iframe {
 }
 
 .sun-editor {
-  .se-toolbar{
-      z-index:0 !important
+  .se-toolbar {
+    z-index: 5 !important;
   }
-  .se-btn-module-enter{
-    display:none !important
+  .se-btn-module-enter {
+    display: none !important;
   }
-  
+}
+.tagDropdown {
+  z-index: 10;
+}
+.catDropdown {
+  z-index: 15;
 }
 
-.signout{
- padding: 4px 12px;
-    background-color: #111111;
-    color: antiquewhite;
-    border: solid 1px white;
+.signout {
+  padding: 4px 12px;
+  background-color: #111111;
+  color: antiquewhite;
+  border: solid 1px white;
 }

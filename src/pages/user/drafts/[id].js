@@ -247,6 +247,7 @@ function SinglePostForEdit({ post }) {
                     placeholder="+ Add Categories"
                     id="catOption"
                     isObject={false}
+                    className="catDropdown"
                   />
                   <div className="text-center-black">
                     <p>SELECT BLOG TAGS</p>
@@ -259,6 +260,7 @@ function SinglePostForEdit({ post }) {
                     placeholder="+ Add Tags"
                     id="tagOption"
                     isObject={false}
+                    className="tagDropdown"
                   />
                 </div>
                 <div className="col-sm-6 col-md-6 col-lg-8">
@@ -276,7 +278,7 @@ function SinglePostForEdit({ post }) {
                   </div>
                   <SunEditor
                     height="60vh"
-                    setDefaultStyle="font-family: cursive; font-size: 18px;"
+                    setDefaultStyle="font-family: Arial; font-size: 16px;"
                     placeholder="Write your content here ...."
                     onChange={handleEditorChange}
                     defaultValue={data.content}

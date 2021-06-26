@@ -164,7 +164,7 @@ const StripeCheckoutForm = ({ data }) => {
                 type="text"
                 placeholder="ZIP"
                 {...register("zip", {
-                  required: "ZIP Codeis required",
+                  required: "ZIP Code is required",
                 })}
               />
               {errors.zip && <p>{errors.zip.message}</p>}
