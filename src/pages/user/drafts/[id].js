@@ -89,7 +89,10 @@ function SinglePostForEdit({ post }) {
           : JSON.stringify(tags)
       );
       formData.append("content", html === "" ? data.content : html);
-      formData.append("template", template);
+      formData.append(
+        "template",
+        template === "" ? blogData.template : template
+      );
       formData.append(
         "slug",
         slugify(data.title, {
@@ -119,6 +122,7 @@ function SinglePostForEdit({ post }) {
 
   const publishPost = async (e) => {
     e.preventDefault();
+    console.log(template);
 
     try {
       const formData = new FormData();
@@ -137,7 +141,10 @@ function SinglePostForEdit({ post }) {
           : JSON.stringify(tags)
       );
       formData.append("content", html === "" ? data.content : html);
-      formData.append("template", template);
+      formData.append(
+        "template",
+        template === "" ? blogData.template : template
+      );
       formData.append(
         "slug",
         slugify(data.title, {
