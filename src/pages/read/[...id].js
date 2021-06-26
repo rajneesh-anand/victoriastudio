@@ -3,6 +3,7 @@ import React from "react";
 import prisma from "../../lib/prisma";
 
 import BlogDetailsContainer from "../../containers/blog/blog-details";
+import BlogDetailsWithoutImage from "../../containers/blog/blog-details-image";
 // import BlogData from "../data/blog.json";
 import Link from "next/link";
 import SEO from "../../components/seo";
@@ -24,7 +25,11 @@ const BlogDetails = ({ data }) => {
         <Header classOption="hb-border" />
         <div className="main-content">
           <div className="container">
-            <BlogDetailsContainer data={result} />
+            {result.template === "template_with_thumbimage" ? (
+              <BlogDetailsContainer data={result} />
+            ) : (
+              <BlogDetailsWithoutImage data={result} />
+            )}
           </div>
         </div>
         <Footer />
@@ -59,7 +64,6 @@ BlogDetails.propTypes = {
 export async function getServerSideProps({ params, req, res }) {
   try {
     const { id } = params;
-   
 
     const post = await prisma.post.findFirst({
       where: {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BlogFilter from "../../../components/blog/blog-filter";
 import BlogCard from "../../../components/blog/blog-card";
+
 // import BlogData from "../../../data/blog.json";
 import useMasonry from "../../../hooks/use-masonry";
 import { slugify } from "../../../utils";

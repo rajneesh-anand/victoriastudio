@@ -10,6 +10,8 @@ import { useSession } from "next-auth/client";
 import dynamic from "next/dynamic";
 import SunEditor, { buttonList } from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
+import { blogTagsOptions } from "../../../constant/blogs";
+import { blogCategoryOptions } from "../../../constant/blogs";
 // const SunEditor = dynamic(() => import("suneditor-react"), {
 //   ssr: false,
 // });
@@ -31,37 +33,10 @@ const Newpost = () => {
   const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isProcessing, setProcessingTo] = useState(false);
+  const [template, setTemplate] = useState("template_with_thumbimage");
 
-  const tagsOptions = [
-    "Spirituality",
-    "News",
-    "Sports",
-    "Science",
-    "Yoga",
-    "People",
-    "Nature",
-    "City",
-    "Jobs",
-    "Travel",
-    "Fashion",
-    "Mobile",
-  ];
-  const categoriesOptions = [
-    "New Added",
-    "Travel",
-    "Jobs",
-    "Sports",
-    "Technology",
-    "Mobile",
-    "Yoga",
-    "Spirituality",
-    "Nature",
-    "Science",
-    "People",
-    "Others",
-  ];
   const tagSelectedValues = ["Nature", "People"];
-  const catSelectedValues = ["Nature", "People"];
+  const catSelectedValues = ["New Added", "People"];
 
   const onTagSelect = (event) => {
     setTags(event);
@@ -88,13 +63,25 @@ const Newpost = () => {
   const draftPost = async (e) => {
     e.preventDefault();
     setProcessingTo(true);
+
     try {
       const formData = new FormData();
       formData.append("image", selectedImage);
       formData.append("title", title);
-      formData.append("categories", JSON.stringify(categories));
-      formData.append("tags", JSON.stringify(tags));
+      formData.append(
+        "categories",
+        categories.length === 0
+          ? JSON.stringify(catSelectedValues)
+          : JSON.stringify(categories)
+      );
+      formData.append(
+        "tags",
+        tags.length === 0
+          ? JSON.stringify(tagSelectedValues)
+          : JSON.stringify(tags)
+      );
       formData.append("content", html);
+      formData.append("template", template);
       formData.append(
         "slug",
         slugify(title, {
@@ -126,23 +113,30 @@ const Newpost = () => {
   const publishPost = async (e) => {
     e.preventDefault();
     setProcessingTo(true);
-    if (tags.length === 0) {
-      setTags(["News", "Sports", "Science", "Yoga", "People", "Nature"]);
-    }
-    if (categoriesOptions.length === 0) {
-      setCategories(["New Added"]);
-    }
+
     try {
       const formData = new FormData();
       formData.append("image", selectedImage);
       formData.append("title", title);
-      formData.append("categories", JSON.stringify(categories));
-      formData.append("tags", JSON.stringify(tags));
+      formData.append(
+        "categories",
+        categories.length === 0
+          ? JSON.stringify(catSelectedValues)
+          : JSON.stringify(categories)
+      );
+      formData.append(
+        "tags",
+        tags.length === 0
+          ? JSON.stringify(tagSelectedValues)
+          : JSON.stringify(tags)
+      );
       formData.append("content", html);
+      formData.append("template", template);
       formData.append(
         "slug",
         slugify(title, {
           remove: /[*+~.()'"!:@,]/g,
+          lower: true,
         })
       );
       formData.append("published", true);
@@ -224,13 +218,24 @@ const Newpost = () => {
                         type="file"
                         required
                       />
+                      <select
+                        onChange={(event) => setTemplate(event.target.value)}
+                        value={template}
+                      >
+                        <option value="template_with_thumbimage">
+                          Blog with ThumbImage
+                        </option>
+                        <option value="template_without_thumbimage">
+                          Blog without ThumbImage
+                        </option>
+                      </select>
                     </form>
                   </div>
                   <div className="text-center-black">
                     <p>SELECT BLOG CATEGORY</p>
                   </div>
                   <Multiselect
-                    options={categoriesOptions} // Options to display in the dropdown
+                    options={blogCategoryOptions} // Options to display in the dropdown
                     selectedValues={catSelectedValues} // Preselected value to persist in dropdown
                     onSelect={onCatSelect} // Function will trigger on select event
                     onRemove={onCatRemove} // Function will trigger on remove event
@@ -243,7 +248,7 @@ const Newpost = () => {
                     <p>SELECT BLOG TAGS</p>
                   </div>
                   <Multiselect
-                    options={tagsOptions} // Options to display in the dropdown
+                    options={blogTagsOptions} // Options to display in the dropdown
                     selectedValues={tagSelectedValues} // Preselected value to persist in dropdown
                     onSelect={onTagSelect} // Function will trigger on select event
                     onRemove={onTagRemove} // Function will trigger on remove event
