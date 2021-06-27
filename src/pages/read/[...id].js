@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 import prisma from "../../lib/prisma";
-
 import BlogDetailsContainer from "../../containers/blog/blog-details";
 import BlogDetailsWithoutImage from "../../containers/blog/blog-details-image";
 // import BlogData from "../data/blog.json";
@@ -14,6 +13,7 @@ import ScrollToTop from "../../components/scroll-to-top";
 
 const BlogDetails = ({ data }) => {
   const result = JSON.parse(data);
+  console.log(result.template);
 
   return result ? (
     <Layout>
@@ -76,7 +76,7 @@ export async function getServerSideProps({ params, req, res }) {
       },
       include: {
         author: {
-          select: { name: true },
+          select: { name: true, image: true },
         },
       },
     });

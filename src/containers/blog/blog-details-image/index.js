@@ -6,11 +6,12 @@ import BlogTag from "../../../components/blog/blog-tag";
 import Comment from "../../../components/comment";
 import { slugify } from "../../../utils";
 import htmr from "htmr";
-import Image from "next/image";
+import SocialIcon from "../../../components/social-icon";
 
 SwiperCore.use([Pagination]);
 
 const BlogDetailsWithoutImage = ({ data }) => {
+  console.log(data.author);
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -30,17 +31,33 @@ const BlogDetailsWithoutImage = ({ data }) => {
   return (
     <div className="blog-details-area">
       <div className="post-details-content">
-        {/* <div className="post-media">
-          <Image
-            src={data.image}
-            alt={data.title}
-            layout="responsive"
-            width={800}
-            height={400}
-          />
-        </div> */}
-
         <div className="post-details-body">
+          <div className="blog-title">{data.title}</div>
+          <div className="user">
+            <img src={data.author.image} alt="profile image" />
+            <div className="user-info">
+              <h5>{data.author.name}</h5>
+              <small>{formatDate(data.createdAt)}</small>
+            </div>
+            <div className="social-icons">
+              <SocialIcon
+                path="https://www.facebook.com/"
+                icon="icofont-facebook"
+              />
+              <SocialIcon path="https://twitter.com/" icon="icofont-twitter" />
+
+              <SocialIcon
+                path="https://www.pinterest.com"
+                icon="social_pinterest"
+              />
+              <SocialIcon
+                path="https://www.instagram.com/"
+                icon="icofont-instagram"
+              />
+              <SocialIcon path="https://rss.com/" icon="social_rss" />
+            </div>
+          </div>
+
           <div className="bread-crumbs">
             <Link href={process.env.PUBLIC_URL + "/"}>
               <a>Home</a>
@@ -53,52 +70,10 @@ const BlogDetailsWithoutImage = ({ data }) => {
             <span className="active">{data.title}</span>
           </div>
 
-          <div className="content">
-            <div className="blog-title">{data.title}</div>
-            <div className="blog-content"> {htmr(data.content)} </div>
-            {/* <div className="meta">{data.author.name}</div> */}
-            {/* <div className="meta">{formatDate(data.createdAt)}</div> */}
-          </div>
+          <div className="blog-content"> {htmr(data.content)} </div>
 
           <BlogTag tags={data.tags} />
-          <div className="social-icons">
-            <span>Share:</span>
-            <a
-              href="https://www.facebook.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="icofont-facebook"></i>
-            </a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="icofont-twitter"></i>
-            </a>
-            <a
-              href="https://www.pinterest.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="social_pinterest"></i>
-            </a>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="icofont-instagram"></i>
-            </a>
-            <a
-              href="https://rss.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="social_rss"></i>
-            </a>
-          </div>
+
           <div className="comment-area">
             <h4 className="title">Leave a comment</h4>
             <div className="comment-form-wrap">
