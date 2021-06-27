@@ -14,12 +14,14 @@ const MoviePlayerPage = () => {
   const { id } = router.query;
   const data = movieData.find((x) => x.slug === id);
 
-  const { slug, name, poster, media } = data;
-  console.log(slug);
+  const { name, poster, media } = data;
 
   return (
     <Layout>
-      <SEO title={name} canonical={process.env.PUBLIC_URL + `/movie/${slug}`} />
+      <SEO
+        title={name}
+        canonical={process.env.PUBLIC_URL + `/movie/${data.slug}`}
+      />
       <div className="wrapper home-default-wrapper">
         <Header classOption="hb-border" />
         <div className="main-content">
