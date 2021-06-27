@@ -110,6 +110,11 @@ const HamburgerMenu = ({ show, onClose }) => {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/movie">
+                    <a>Movie</a>
+                  </Link>
+                </li>
+                <li>
                   <Link href="/contact">
                     <a>Contact</a>
                   </Link>
@@ -134,7 +139,9 @@ const HamburgerMenu = ({ show, onClose }) => {
                       </Link>
                     </li>
                     <li>
-                      <button className="signout" onClick={() => signOut()}>Sign Out</button>
+                      <button className="signout" onClick={() => signOut()}>
+                        Sign Out
+                      </button>
                     </li>
                   </>
                 )}

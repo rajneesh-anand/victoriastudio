@@ -5,7 +5,7 @@ const SEO = ({ title, description, canonical, css, js, image }) => (
   <Head>
     <meta charSet="utf-8" />
     <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={title} />
     <meta
       name="viewport"
       content="width=device-width,minimum-scale=1,initial-scale=1"

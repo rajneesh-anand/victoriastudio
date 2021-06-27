@@ -34,6 +34,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.8.1",
     "react-isotope": "^1.0.7",
+    "react-jw-player": "^1.19.1",
     "react-lightgallery": "^0.9.0",
     "react-mailchimp-subscribe": "^2.1.3",
     "reactstrap": "^8.9.0",

@@ -2715,3 +2715,14 @@ iframe {
   color: antiquewhite;
   border: solid 1px white;
 }
+
+.player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  video {
+    width: 100%;
+  }
+}
