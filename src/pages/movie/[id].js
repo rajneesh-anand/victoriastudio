@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 import ReactJWPlayer from "react-jw-player";
 import Link from "next/link";
@@ -9,17 +8,11 @@ import Layout from "../../layouts";
 import { movieData } from "../../utils/movielist";
 import { useRouter } from "next/router";
 
-const MoviePlayerPage = () => {
-  const router = useRouter();
-  const { id } = router.query;
-  const data = movieData.find((x) => x.slug === id);
-
+const MoviePlayerPage = ({ data }) => {
+  const { slug, name, media, poster } = data;
   return (
     <Layout>
-      <SEO
-        title={data.name}
-        canonical={process.env.PUBLIC_URL + `/movie/${data.slug}`}
-      />
+      <SEO title={name} canonical={process.env.PUBLIC_URL + `/movie/${slug}`} />
       <div className="wrapper home-default-wrapper">
         <Header classOption="hb-border" />
         <div className="main-content">
@@ -27,8 +20,8 @@ const MoviePlayerPage = () => {
             <ReactJWPlayer
               playerId="studionmovieonline"
               playerScript="https://cdn.jwplayer.com/libraries/QoEEgjta.js"
-              file={data.media}
-              image={data.poster}
+              file={media}
+              image={poster}
             />
 
             {/* <div className="row">
@@ -56,12 +49,14 @@ const MoviePlayerPage = () => {
   );
 };
 
-MoviePlayerPage.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    }),
-  }),
-};
+export async function getServerSideProps({ params }) {
+  const { id } = params;
+  const data = movieData.find((x) => x.slug === id);
+  console.log(data);
+
+  return {
+    props: { data: data },
+  };
+}
 
 export default MoviePlayerPage;
