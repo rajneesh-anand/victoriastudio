@@ -14,12 +14,10 @@ const MoviePlayerPage = () => {
   const { id } = router.query;
   const data = movieData.find((x) => x.slug === id);
 
-  const { name, poster, media } = data;
-
   return (
     <Layout>
       <SEO
-        title={name}
+        title={data.name}
         canonical={process.env.PUBLIC_URL + `/movie/${data.slug}`}
       />
       <div className="wrapper home-default-wrapper">
@@ -29,8 +27,8 @@ const MoviePlayerPage = () => {
             <ReactJWPlayer
               playerId="studionmovieonline"
               playerScript="https://cdn.jwplayer.com/libraries/QoEEgjta.js"
-              file={media}
-              image={poster}
+              file={data.media}
+              image={data.poster}
             />
 
             {/* <div className="row">

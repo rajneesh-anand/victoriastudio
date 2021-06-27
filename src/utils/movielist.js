@@ -1,13 +1,13 @@
 export const movieData = [
   {
     id: 1,
-    slug: "christmas",
+    slug: "tom-and-jerry",
     poster:
       "https://blogsite-aws-bucket.s3.ap-south-1.amazonaws.com/movie/tom-jerry.jpg",
     media:
       "https://blogsite-aws-bucket.s3.ap-south-1.amazonaws.com/movie/tom-jerry.mp4",
     duration: "4 mins",
-    name: "Christmas",
+    name: "Tom & Jerry",
   },
   {
     id: 2,
