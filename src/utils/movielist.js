@@ -16,7 +16,7 @@ export const movieData = [
       "https://blogsite-aws-bucket.s3.ap-south-1.amazonaws.com/movie/queen-of-the-damned.jpg",
     media:
       "https://blogsite-aws-bucket.s3.ap-south-1.amazonaws.com/movie/queen-of-the-damned.mp4",
-    duration: "3 mins",
+    duration: "1 Hour 42 Min",
     name: "Queen Of The Damned",
   },
 ];

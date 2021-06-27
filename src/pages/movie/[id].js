@@ -13,7 +13,9 @@ const MoviePlayerPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const data = movieData.find((x) => x.slug === id);
+
   const { slug, name, poster, media } = data;
+  console.log(slug);
 
   return (
     <Layout>
@@ -52,22 +54,6 @@ const MoviePlayerPage = () => {
       </div>
     </Layout>
   );
-  // : (
-  //   <Layout>
-  //     <SEO title="Blog link broken" canonical={process.env.PUBLIC_URL} />
-  //     <div className="wrapper home-default-wrapper">
-  //       <Header classOption="hb-border" />
-  //       <div className="main-content">
-  //         <div className="container">
-  //           <div className="hv-center">
-  //             <p>Nothing Here ...</p>
-  //           </div>
-  //         </div>
-  //       </div>
-  //       <Footer />
-  //     </div>
-  //   </Layout>
-  // );
 };
 
 MoviePlayerPage.propTypes = {
@@ -77,27 +63,5 @@ MoviePlayerPage.propTypes = {
     }),
   }),
 };
-
-// export async function getServerSideProps({ params, req, res }) {
-//   try {
-//     const { id } = params;
-//     console.log(id);
-//     const res = await fetch(`http://localhost:8080/api/video/${id}/movie`);
-//     const data = await res.data;
-//     console.log(res);
-
-//     if (!data) {
-//       return {
-//         notFound: true,
-//       };
-//     }
-
-//     return {
-//       props: { data: res },
-//     };
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 
 export default MoviePlayerPage;
