@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "pg:run": "npx prisma db push --preview-feature",
-    "vercel-build": "prisma migrate deploy && next build",
     "prisma:generate": "prisma generate",
     "postinstall": "prisma generate"
   },
