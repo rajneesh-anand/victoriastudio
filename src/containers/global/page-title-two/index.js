@@ -10,7 +10,7 @@ const PageTitleContainerTwo = ({ title, subTitle }) => {
             <PageTitle
               classOption="page-title-content"
               subTitle={subTitle}
-              // title={title}
+              title={title}
             />
           </div>
         </div>

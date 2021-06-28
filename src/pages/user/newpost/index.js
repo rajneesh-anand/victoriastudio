@@ -170,11 +170,13 @@ const Newpost = () => {
         <div className="wrapper home-default-wrapper">
           <Header classOption="hb-border" />
           <div className="main-content">
-            <div className="text-center-black">
-              <p>Please Sign In to upload photos </p>
-              <Link href="/auth/signin">
-                <a>Sign In</a>
-              </Link>
+            <div className="hv-center">
+              <div className="text-center-black">
+                <p>Please Sign In to Post Your Blogs </p>
+                <Link href="/auth/signin">
+                  <a>Sign In</a>
+                </Link>
+              </div>
             </div>
           </div>
           <Footer />

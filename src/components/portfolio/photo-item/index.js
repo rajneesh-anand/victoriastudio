@@ -3,6 +3,9 @@ import { LightgalleryItem, LightgalleryProvider } from "react-lightgallery";
 import Link from "next/link";
 
 const PortfolioItem = ({ portfolio }) => {
+  function addDefaultSrc(ev) {
+    ev.target.src = "https://source.unsplash.com/600x900/?tech,street";
+  }
   return (
     <div className="single-portfolio">
       <LightgalleryProvider>
@@ -13,6 +16,7 @@ const PortfolioItem = ({ portfolio }) => {
           <div className="thumbnail">
             <div className="overlay">
               <img
+                onError={addDefaultSrc}
                 src={process.env.PUBLIC_URL + portfolio.url}
                 alt="portfolio"
               />

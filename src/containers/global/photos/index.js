@@ -31,8 +31,10 @@ const PortfolioContainer = () => {
     ".messonry-button button"
   );
   return loading ? (
-    <div className="text-center">
-      <h4>Loading.....</h4>
+    <div className="hv-center">
+      <div className="spinner-border text-primary" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
     </div>
   ) : (
     <div className="portfolio-area portfolio-default-area">

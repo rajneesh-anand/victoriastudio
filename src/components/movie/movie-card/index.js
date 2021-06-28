@@ -2,8 +2,6 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 
 const MovieCard = ({ data }) => {
-  console.log(data);
-
   function addDefaultSrc(ev) {
     ev.target.src = "https://source.unsplash.com/600x900/?tech,street";
   }
@@ -18,6 +16,7 @@ const MovieCard = ({ data }) => {
           alt={data.title}
         />
       </div>
+
       <div className="card-body-movie">
         <span className="tag tag-teal">{data.title}</span>
         <div

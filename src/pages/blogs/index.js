@@ -18,10 +18,7 @@ const Blogs = () => {
         <div className="wrapper home-default-wrapper">
           <Header classOption="hb-border" />
           <div className="main-content">
-            <PageTitleContainerTwo
-              subTitle="Our Blog"
-              title="Write &amp; Share"
-            />
+            <PageTitleContainerTwo subTitle="Blogs" title="Write &amp; Share" />
             <BlogContainer />
           </div>
           <Footer />

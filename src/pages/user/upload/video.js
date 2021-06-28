@@ -72,7 +72,8 @@ const UploadVideo = () => {
     );
     formData.append("status", true);
     formData.append("author", session?.user?.email);
-
+    //"https://nodappserver.herokuapp.com/api/awsupload";
+    // "http://localhost:8080/api/awsupload",
     const result = await fetch(
       "https://nodappserver.herokuapp.com/api/awsupload",
       {

@@ -70,35 +70,35 @@ const Account = ({ data }) => {
         <div className="main-content">
           <div className="container">
             <div className="row anchorList">
-              <div className="col-3 col-md-2">
+              <div className="col-4 col-lg-3 col-md-3 ">
                 <Link href="/user/newpost">
                   <div className="buttonCol">
                     <a>Write New Blog</a>
                   </div>
                 </Link>
               </div>
-              <div className="col-3 col-md-2">
+              <div className="col-4 col-lg-3 col-md-3 ">
                 <Link href="/user/drafts">
                   <div className="buttonCol">
                     <a>Drafts List</a>
                   </div>
                 </Link>
               </div>
-              <div className="col-3 col-md-2">
+              <div className="col-4 col-lg-3 col-md-3 ">
                 <Link href="/user/upload/photo">
                   <div className="buttonCol">
                     <a>Upload Photo</a>
                   </div>
                 </Link>
               </div>
-              <div className="col-3 col-md-2 ">
+              <div className="col-4 col-lg-3 col-md-3 ">
                 <Link href="/user/upload/video">
                   <div className="buttonCol">
                     <a>Upload Movie</a>
                   </div>
                 </Link>
               </div>
-              <div className="col-3 col-md-2 ">
+              <div className="col-4 col-lg-3 col-md-3 ">
                 <Link href="/user/product">
                   <div className="buttonCol">
                     <a>Upload Product</a>

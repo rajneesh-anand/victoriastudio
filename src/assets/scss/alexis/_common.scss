@@ -637,18 +637,18 @@ iframe {
 
 .page-title-area {
   .page-title-content {
-    padding: 10px 0 10px;
+    padding: 5px 0 5px;
     @media #{$md-device} {
-      padding: 10px 0 10px;
+      padding: 5px 0 5px;
     }
     @media #{$sm-device} {
       padding: 10px 0 10px;
     }
     .title {
-      font-size: 60px;
+      font-size: 18px;
       line-height: 1;
       letter-spacing: -0.25px;
-      font-family: $secondary-font;
+      font-family: $font-current-theme1;
       @media #{$lg-device} {
         font-size: 36px;
       }
@@ -661,8 +661,9 @@ iframe {
       font-family: $font-current-theme1;
       font-size: 18px;
       letter-spacing: 3px;
+      margin-right: 10px;
       //   margin-bottom: 39px;
-      text-transform: uppercase;
+      // text-transform: uppercase;
       @media #{$lg-device} {
         margin-bottom: 20px;
       }

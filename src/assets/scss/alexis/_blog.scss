@@ -535,6 +535,11 @@
       }
     }
   }
+
+  .blog-content {
+    border-top: 1px solid teal;
+    padding-top: 10px;
+  }
 }
 .post-gallery {
   .gallery-slider {
@@ -1054,7 +1059,7 @@
     color: white !important;
   }
   @media #{$xs-device} {
-    font-size: 8px;
+    font-size: 12px;
   }
 }
 

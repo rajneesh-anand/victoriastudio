@@ -5,8 +5,6 @@ import SEO from "../../components/seo";
 import Footer from "../../layouts/footer";
 import Header from "../../layouts/header";
 import Layout from "../../layouts";
-import { movieData } from "../../utils/movielist";
-import { useRouter } from "next/router";
 import prisma from "../../lib/prisma";
 
 const MoviePlayerPage = ({ data }) => {
