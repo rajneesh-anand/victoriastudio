@@ -51,6 +51,7 @@
 }
 
 .blog-area {
+  border-top: solid 1px #ccc;
   &.blog-masonry-area {
     padding: 0 0 100px;
     @media #{$md-device} {
@@ -947,7 +948,7 @@
 
 .index-content {
   margin-bottom: 15px;
-  padding: 25px 0px;
+  padding: 4px 0px;
 }
 
 .index-content .card {
@@ -1032,21 +1033,75 @@
   }
 }
 .anchorList {
-  margin-top: 32px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  justify-content: center;
   @media #{$xxs-device} {
-    margin-top: 24px;
+    margin-top: 8px;
   }
   @media #{$xs-device} {
-    margin-top: 24px;
-  }
-  a {
-    border: solid 1px darkgreen;
-    text-transform: uppercase;
-    padding: 6px 12px;
-    color: white;
-    background-color: teal;
+    margin-top: 8px;
   }
 }
 .buttonCol {
-  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  border: solid 1px darkgreen;
+  margin: 5px;
+  background-color: teal;
+  cursor: pointer;
+  a {
+    color: white !important;
+  }
+  @media #{$xs-device} {
+    font-size: 8px;
+  }
+}
+
+.movie {
+  img {
+    width: 100%;
+    padding: 15px;
+    border: solid 1px teal;
+  }
+
+  input {
+    width: 100%;
+    margin-top: 8px;
+  }
+  .poster-file {
+    margin-top: 8px;
+    label {
+      // position: absolute;
+      width: 100%;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: rgb(15, 26, 63);
+      color: #fff;
+      border-radius: 5px;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
+  .movie-file {
+    margin-top: 8px;
+    label {
+      // position: absolute;
+      width: 100%;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: rgb(15, 26, 63);
+      color: #fff;
+      border-radius: 5px;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
 }

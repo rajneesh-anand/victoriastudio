@@ -7,12 +7,17 @@ import Header from "../../layouts/header";
 import Layout from "../../layouts";
 import { movieData } from "../../utils/movielist";
 import { useRouter } from "next/router";
+import prisma from "../../lib/prisma";
 
 const MoviePlayerPage = ({ data }) => {
-  const { slug, name, media, poster } = data;
-  return (
+  const result = JSON.parse(data);
+  const { slug, title, media, poster } = result;
+  return result ? (
     <Layout>
-      <SEO title={name} canonical={process.env.PUBLIC_URL + `/movie/${slug}`} />
+      <SEO
+        title={title}
+        canonical={process.env.PUBLIC_URL + `/movie/${slug}`}
+      />
       <div className="wrapper home-default-wrapper">
         <Header classOption="hb-border" />
         <div className="main-content">
@@ -23,24 +28,19 @@ const MoviePlayerPage = ({ data }) => {
               file={media}
               image={poster}
             />
-
-            {/* <div className="row">
-              <div className="player">
-                <video controls autoPlay crossOrigin="anonymous">
-                  <source
-                    src={`http://localhost:8080/api/video/${slug}`}
-                    type="video/mp4"
-                  />
-                  <track
-                    label="English"
-                    kind="captions"
-                    srcLang="en"
-                    src={`http://localhost:8080/api/video/${slug}/caption`}
-                    default
-                  />
-                </video>
-              </div>
-            </div> */}
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </Layout>
+  ) : (
+    <Layout>
+      <SEO title="Blog link broken" canonical={process.env.PUBLIC_URL} />
+      <div className="wrapper home-default-wrapper">
+        <Header classOption="hb-border" />
+        <div className="main-content">
+          <div className="container">
+            <p>Nothing Here ...</p>
           </div>
         </div>
         <Footer />
@@ -49,14 +49,35 @@ const MoviePlayerPage = ({ data }) => {
   );
 };
 
-export async function getServerSideProps({ params }) {
-  const { id } = params;
-  const data = movieData.find((x) => x.slug === id);
-  console.log(data);
+export async function getServerSideProps({ params, req, res }) {
+  try {
+    const { id } = params;
+    console.log(id);
 
-  return {
-    props: { data: data },
-  };
+    const post = await prisma.movie.findFirst({
+      where: {
+        slug: id,
+      },
+      include: {
+        author: {
+          select: { name: true, image: true },
+        },
+      },
+    });
+    console.log(post);
+    return {
+      props: { data: JSON.stringify(post) },
+    };
+  } catch (error) {
+    console.log(error);
+    res.statusCode = 404;
+    return {
+      props: {},
+    };
+  } finally {
+    async () => {
+      await prisma.$disconnect();
+    };
+  }
 }
-
 export default MoviePlayerPage;

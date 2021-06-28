@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../../../components/movie/movie-card";
-import { movieData } from "../../../utils/movielist";
 
 const BlogContainer = () => {
-  // const [movieData, setMovieData] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [movieData, setMovieData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // "https://nodappserver.herokuapp.com/api/upload"
+  useEffect(async () => {
+    const res = await fetch("/api/movie");
+    const resdata = await res.json();
+    if (resdata.msg === "success") {
+      setLoading(false);
+      setMovieData(resdata.data);
+    }
+  }, []);
 
-  // useEffect(async () => {
-  //   const res = await fetch("http://localhost:8080/api/video");
-  //   const data = await res.json();
-  //   console.log(data);
-
-  //   if (data.msg === "success") {
-  //     setLoading(false);
-  //     setMovieData(data.result);
-  //   }
-  // }, []);
-
-  return (
+  return loading ? (
+    <div className="hv-center">
+      <div className="spinner-border text-primary" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
+  ) : (
     <div className="blog-area blog-masonry-area">
       <div className="container">
         <div className="row post-items-style1">

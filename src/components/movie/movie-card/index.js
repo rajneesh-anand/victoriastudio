@@ -4,20 +4,22 @@ import Link from "next/link";
 const MovieCard = ({ data }) => {
   console.log(data);
 
+  function addDefaultSrc(ev) {
+    ev.target.src = "https://source.unsplash.com/600x900/?tech,street";
+  }
+
   return (
     <div className="card">
       <div className="card-header-img">
         <img
-          src={
-            data.poster
-              ? data.poster
-              : "https://source.unsplash.com/600x900/?tech,street"
-          }
-          alt="rover"
+          onError={addDefaultSrc}
+          className="img-responsive"
+          src={data.poster}
+          alt={data.title}
         />
       </div>
       <div className="card-body-movie">
-        <span className="tag tag-teal">{data.name}</span>
+        <span className="tag tag-teal">{data.title}</span>
         <div
           style={{
             display: "flex",
@@ -25,7 +27,7 @@ const MovieCard = ({ data }) => {
             width: "100%",
           }}
         >
-          {data.duration}
+          {data.time}
 
           <div className="playButton">
             <Link href={`/movie/${data.slug}`}>

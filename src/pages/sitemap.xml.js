@@ -13,6 +13,15 @@ export const getServerSideProps = async ({ res }) => {
     },
   });
 
+  const movies = await prisma.movie.findMany({
+    where: {
+      status: true,
+    },
+    select: {
+      slug: true,
+    },
+  });
+
   const baseUrl = {
     development: "http://localhost:3000",
     production: "https://vic.vercel.app",
@@ -31,6 +40,7 @@ export const getServerSideProps = async ({ res }) => {
     "https://vic.vercel.app/user/product",
     "https://vic.vercel.app/user/upload",
     "https://vic.vercel.app/auth/signin",
+    "https://vic.vercel.app/movie",
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -41,7 +51,7 @@ export const getServerSideProps = async ({ res }) => {
             <url>
               <loc>${url}</loc>
               <lastmod>${new Date().toISOString()}</lastmod>
-              <changefreq>monthly</changefreq>
+              <changefreq>weekly</changefreq>
               <priority>1.0</priority>
             </url>
           `;
@@ -55,12 +65,25 @@ export const getServerSideProps = async ({ res }) => {
               <url>
                 <loc>${baseUrl}/read/${blog.id}/${blog.slug}</loc>
                 <lastmod>${new Date().toISOString()}</lastmod>
-                <changefreq>monthly</changefreq>
+                <changefreq>weekly</changefreq>
                 <priority>1.0</priority>
               </url>
             `;
             })
             .join("")}
+
+              ${movies
+                .map((movie) => {
+                  return `
+              <url>
+                <loc>${baseUrl}/movie/${movie.slug}</loc>
+                <lastmod>${new Date().toISOString()}</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>1.0</priority>
+              </url>
+            `;
+                })
+                .join("")}
     </urlset>
   `;
 

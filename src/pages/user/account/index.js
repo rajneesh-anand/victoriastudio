@@ -70,29 +70,44 @@ const Account = ({ data }) => {
         <div className="main-content">
           <div className="container">
             <div className="row anchorList">
-              <div className="col-6 col-md-3 buttonCol">
+              <div className="col-3 col-md-2">
                 <Link href="/user/newpost">
-                  <a>Write New Blog</a>
+                  <div className="buttonCol">
+                    <a>Write New Blog</a>
+                  </div>
                 </Link>
               </div>
-              <div className="col-6 col-md-3 buttonCol">
+              <div className="col-3 col-md-2">
                 <Link href="/user/drafts">
-                  <a>Drafts List</a>
+                  <div className="buttonCol">
+                    <a>Drafts List</a>
+                  </div>
                 </Link>
               </div>
-              <div className="col-6 col-md-3 buttonCol">
-                <Link href="/user/upload">
-                  <a>Upload Photo</a>
+              <div className="col-3 col-md-2">
+                <Link href="/user/upload/photo">
+                  <div className="buttonCol">
+                    <a>Upload Photo</a>
+                  </div>
                 </Link>
               </div>
-              <div className="col-6 col-md-3 buttonCol">
+              <div className="col-3 col-md-2 ">
+                <Link href="/user/upload/video">
+                  <div className="buttonCol">
+                    <a>Upload Movie</a>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-3 col-md-2 ">
                 <Link href="/user/product">
-                  <a>Upload Product</a>
+                  <div className="buttonCol">
+                    <a>Upload Product</a>
+                  </div>
                 </Link>
               </div>
             </div>
           </div>
-          <hr />
+
           <BlogContainerTwo data={blogData} />
         </div>
         <Footer />

@@ -59,11 +59,6 @@ const BlogContainer = () => {
               </div>
             ))}
         </div>
-        {/* <div className="row">
-          <div className="col-lg-12 text-center">
-            <button className="btn-more">...Load More...</button>
-          </div>
-        </div> */}
       </div>
     </div>
   );
