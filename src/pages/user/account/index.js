@@ -10,34 +10,36 @@ import ScrollToTop from "../../../components/scroll-to-top";
 import BlogContainerTwo from "../../../containers/blog/blog-two";
 
 const Account = ({ blogData }) => {
-  const [session] = useSession();
+  const [session, loading] = useSession();
   const data = blogData.length != 0 ? JSON.parse(blogData) : null;
 
-  if (!session) {
-    return (
-      <Layout>
-        <SEO
-          title="My Account | Victoria Studio "
-          canonical={process.env.PUBLIC_URL + "/user/account"}
-        />
-        <div className="wrapper home-default-wrapper">
-          <Header classOption="hb-border" />
-          <div className="main-content">
-            <div className="hv-center">
-              <p>Please SignIn To Access Your Account </p>
-              <Link href="/auth/signin">
-                <a>Sign In</a>
-              </Link>
-            </div>
+  return loading ? (
+    <div className="hv-center">
+      <div className="spinner-border text-primary" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
+  ) : !session ? (
+    <Layout>
+      <SEO
+        title="My Account | Victoria Studio "
+        canonical={process.env.PUBLIC_URL + "/user/account"}
+      />
+      <div className="wrapper home-default-wrapper">
+        <Header classOption="hb-border" />
+        <div className="main-content">
+          <div className="hv-center">
+            <p>Please SignIn To Access Your Account </p>
+            <Link href="/auth/signin">
+              <a>Sign In</a>
+            </Link>
           </div>
-          <Footer />
-          <ScrollToTop />
         </div>
-      </Layout>
-    );
-  }
-
-  return (
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </Layout>
+  ) : (
     <Layout>
       <SEO
         title="My Account | Victoria Studio "
