@@ -40,10 +40,8 @@ export default function AccountverifyPage() {
         <Header classOption="hb-border" />
         <div className="main-content">
           <div className="hv-center">
-            <h3>
-              We have sent a verification link to registered email address.
-            </h3>
-            <h2>Kindly login to your email and verify. Thank You </h2>
+            <h3>Oops Something went wrong</h3>
+            <h2>Your verification link expired</h2>
           </div>
         </div>
         <Footer />

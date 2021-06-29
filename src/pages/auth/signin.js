@@ -1,31 +1,31 @@
 import React, { useState } from "react";
-import { signIn, csrfToken, getCsrfToken } from "next-auth/client";
+import { signIn, useSession, getCsrfToken } from "next-auth/client";
 import SEO from "../../components/seo";
 import Footer from "../../layouts/footer";
 import Header from "../../layouts/header";
 import Layout from "../../layouts";
+import { useRouter } from "next/router";
 
 export default function SignIn({ csrfToken }) {
   const [email, setEmail] = useState("");
-  const isValid = () => {
-    if (email === "") {
-      return false;
-    } else {
-      return true;
-    }
-  };
+  const [session, loading] = useSession();
+  const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (isValid()) {
-      signIn("email", { email: email });
-    }
+    signIn("email", { email: email });
   };
+
+  if (session) {
+    router.push("/user/account");
+  }
 
   return (
     <Layout>
-      <SEO title="Victoria Studio | Login " />
+      <SEO
+        title="Login | Victoria Studio"
+        canonical={`${process.env.NEXTAUTH_URL}/auth/signin`}
+      />
       <div className="wrapper about-page-wrapper">
         <Header classOption="hb-border" />
         <div className="main-content">
@@ -38,14 +38,7 @@ export default function SignIn({ csrfToken }) {
                   </div>
 
                   <div className="commonStyle">
-                    <button
-                      className="google"
-                      onClick={() =>
-                        signIn("google", {
-                          callbackUrl: "https://vic.vercel.app/",
-                        })
-                      }
-                    >
+                    <button className="google" onClick={() => signIn("google")}>
                       <span
                         className="fab fa-google fa-lg"
                         aria-hidden="true"

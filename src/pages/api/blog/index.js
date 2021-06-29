@@ -5,10 +5,10 @@ export default async function handler(req, res) {
   const perPage = 10;
 
   try {
-    const movie = await prisma.movie.findMany({
+    const blog = await prisma.post.findMany({
       take: perPage * curPage,
       where: {
-        status: true,
+        published: true,
       },
       include: {
         author: {
@@ -17,15 +17,15 @@ export default async function handler(req, res) {
       },
     });
 
-    const totalMovies = movie.length;
+    const totalBlogs = blog.length;
 
-    console.log(movie);
+    // console.log(blog);
 
     res.status(200).json({
       msg: "success",
-      data: movie,
+      data: blog,
       curPage: curPage,
-      maxPage: Math.ceil(totalMovies / perPage),
+      maxPage: Math.ceil(totalBlogs / perPage),
     });
   } catch (error) {
     console.log(error);

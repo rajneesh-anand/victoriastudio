@@ -9,32 +9,9 @@ import Layout from "../../../layouts";
 import ScrollToTop from "../../../components/scroll-to-top";
 import BlogContainerTwo from "../../../containers/blog/blog-two";
 
-export const getServerSideProps = async ({ req, res }) => {
-  const session = await getSession({ req });
-  if (!session) {
-    res.statusCode = 403;
-    return { props: { drafts: [] } };
-  }
-
-  const drafts = await prisma.post.findMany({
-    where: {
-      author: { email: session.user.email },
-      published: true,
-    },
-    include: {
-      author: {
-        select: { name: true },
-      },
-    },
-  });
-  return {
-    props: { data: JSON.stringify(drafts) },
-  };
-};
-
-const Account = ({ data }) => {
+const Account = ({ blogData }) => {
   const [session] = useSession();
-  const blogData = JSON.parse(data);
+  const data = blogData.length != 0 ? JSON.parse(blogData) : null;
 
   if (!session) {
     return (
@@ -46,8 +23,8 @@ const Account = ({ data }) => {
         <div className="wrapper home-default-wrapper">
           <Header classOption="hb-border" />
           <div className="main-content">
-            <div className="text-center-black">
-              <p>Please Sign In to upload photos </p>
+            <div className="hv-center">
+              <p>Please SignIn To Access Your Account </p>
               <Link href="/auth/signin">
                 <a>Sign In</a>
               </Link>
@@ -59,6 +36,7 @@ const Account = ({ data }) => {
       </Layout>
     );
   }
+
   return (
     <Layout>
       <SEO
@@ -80,7 +58,7 @@ const Account = ({ data }) => {
               <div className="col-4 col-lg-3 col-md-3 ">
                 <Link href="/user/drafts">
                   <div className="buttonCol">
-                    <a>Drafts List</a>
+                    <a>Drafts Blog</a>
                   </div>
                 </Link>
               </div>
@@ -107,14 +85,36 @@ const Account = ({ data }) => {
               </div>
             </div>
           </div>
-
-          <BlogContainerTwo data={blogData} />
+          <BlogContainerTwo data={data} />
         </div>
         <Footer />
         <ScrollToTop />
       </div>
     </Layout>
   );
+};
+
+export const getServerSideProps = async ({ req, res }) => {
+  const session = await getSession({ req });
+
+  if (!session) {
+    return { props: { blogData: [] } };
+  }
+
+  const drafts = await prisma.post.findMany({
+    where: {
+      author: { email: session.user.email },
+      published: true,
+    },
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
+  return {
+    props: { blogData: JSON.stringify(drafts) },
+  };
 };
 
 export default Account;

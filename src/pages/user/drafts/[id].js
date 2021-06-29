@@ -7,7 +7,6 @@ import Footer from "../../../layouts/footer";
 import Header from "../../../layouts/header";
 import Layout from "../../../layouts";
 import ScrollToTop from "../../../components/scroll-to-top";
-import htmr from "htmr";
 import dynamic from "next/dynamic";
 import SunEditor, { buttonList } from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
@@ -43,6 +42,7 @@ function SinglePostForEdit({ post }) {
   const [template, setTemplate] = useState(blogData.template);
   const [tags, setTags] = useState(blogData.tags);
   const [categories, setCategories] = useState(blogData.categories);
+  const [isProcessing, setProcessingTo] = useState(false);
 
   const tagSelectedValues = ["Nature", "People"];
   const catSelectedValues = ["New Added", "People"];
@@ -71,6 +71,10 @@ function SinglePostForEdit({ post }) {
 
   const draftPost = async (e) => {
     e.preventDefault();
+    if (title === "" || html === "") {
+      return;
+    }
+    setProcessingTo(true);
 
     try {
       const formData = new FormData();
@@ -111,18 +115,23 @@ function SinglePostForEdit({ post }) {
         }
       );
       const resultJson = await result.json();
-      console.log(resultJson);
+
       if (resultJson.msg === "success") {
+        setProcessingTo(false);
         setMessage("Your Draft is updated successfully");
       }
     } catch (error) {
+      setProcessingTo(false);
       console.error(error);
     }
   };
 
   const publishPost = async (e) => {
     e.preventDefault();
-    console.log(template);
+    if (title === "" || html === "") {
+      return;
+    }
+    setProcessingTo(true);
 
     try {
       const formData = new FormData();
@@ -166,9 +175,11 @@ function SinglePostForEdit({ post }) {
       console.log(resultJson);
       if (resultJson.msg === "success") {
         setMessage("Your Blog is updated successfully");
+        setProcessingTo(false);
       }
     } catch (error) {
       console.error(error);
+      setProcessingTo(false);
     }
   };
 
@@ -233,11 +244,11 @@ function SinglePostForEdit({ post }) {
                         onChange={(event) => setTemplate(event.target.value)}
                         value={template}
                       >
-                        <option value="template_with_thumbimage">
-                          Blog with ThumbImage
+                        <option value="template_with_headerimage">
+                          Blog with Header Image
                         </option>
-                        <option value="template_without_thumbimage">
-                          Blog without ThumbImage
+                        <option value="template_without_headerimage">
+                          Blog without Header Image
                         </option>
                       </select>
                     </form>

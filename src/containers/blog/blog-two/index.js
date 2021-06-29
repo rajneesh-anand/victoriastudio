@@ -3,7 +3,6 @@ import React from "react";
 import BlogCardTwo from "../../../components/blog/blog-card-two";
 
 const BlogContainerTwo = ({ data }) => {
-  console.log(data);
   return (
     <div className="blog-area ">
       <div className="container">

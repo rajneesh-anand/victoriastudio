@@ -29,11 +29,11 @@ const Newpost = () => {
   const [html, setHtml] = useState("");
   const [message, setMessage] = useState("");
   const [session, loading] = useSession();
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState("");
   const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isProcessing, setProcessingTo] = useState(false);
-  const [template, setTemplate] = useState("template_with_thumbimage");
+  const [template, setTemplate] = useState("template_with_headerimage");
 
   const tagSelectedValues = ["Nature", "People"];
   const catSelectedValues = ["New Added", "People"];
@@ -62,6 +62,10 @@ const Newpost = () => {
 
   const draftPost = async (e) => {
     e.preventDefault();
+
+    if (title === "" || html === "") {
+      return;
+    }
     setProcessingTo(true);
 
     try {
@@ -112,6 +116,9 @@ const Newpost = () => {
 
   const publishPost = async (e) => {
     e.preventDefault();
+    if (title === "" || html === "") {
+      return;
+    }
     setProcessingTo(true);
 
     try {
@@ -197,23 +204,23 @@ const Newpost = () => {
         <div className="main-content">
           <div className="container">
             {message === "" ? (
-              <div className="row">
-                <div className="col-sm-6 col-md-6 col-lg-4">
-                  <div className="text-center-black">
-                    <p>SELECT BLOG THUMBNAIL IMAGE</p>
-                  </div>
-                  <div className="img-style">
-                    <img
-                      src={
-                        selectedImage
-                          ? URL.createObjectURL(selectedImage)
-                          : null
-                      }
-                      alt={selectedImage ? selectedImage.name : null}
-                      height={280}
-                    />
+              <form>
+                <div className="row">
+                  <div className="col-sm-6 col-md-6 col-lg-4">
+                    <div className="text-center-black">
+                      <p>SELECT BLOG THUMBNAIL IMAGE</p>
+                    </div>
+                    <div className="img-style">
+                      <img
+                        src={
+                          selectedImage
+                            ? URL.createObjectURL(selectedImage)
+                            : null
+                        }
+                        alt={selectedImage ? selectedImage.name : null}
+                        height={280}
+                      />
 
-                    <form>
                       <input
                         accept=".jpg, .png, .jpeg"
                         onChange={handleChange}
@@ -224,72 +231,80 @@ const Newpost = () => {
                         onChange={(event) => setTemplate(event.target.value)}
                         value={template}
                       >
-                        <option value="template_with_thumbimage">
-                          Blog with ThumbImage
+                        <option value="template_with_headerimage">
+                          Blog with Header Image
                         </option>
-                        <option value="template_without_thumbimage">
-                          Blog without ThumbImage
+                        <option value="template_without_headerimage">
+                          Blog without Header Image
                         </option>
                       </select>
-                    </form>
-                  </div>
-                  <div className="text-center-black">
-                    <p>SELECT BLOG CATEGORY</p>
-                  </div>
-                  <Multiselect
-                    options={blogCategoryOptions} // Options to display in the dropdown
-                    selectedValues={catSelectedValues} // Preselected value to persist in dropdown
-                    onSelect={onCatSelect} // Function will trigger on select event
-                    onRemove={onCatRemove} // Function will trigger on remove event
-                    placeholder="+ Add Categories"
-                    id="catOption"
-                    isObject={false}
-                    className="catDrowpdown"
-                  />
-                  <div className="text-center-black">
-                    <p>SELECT BLOG TAGS</p>
-                  </div>
-                  <Multiselect
-                    options={blogTagsOptions} // Options to display in the dropdown
-                    selectedValues={tagSelectedValues} // Preselected value to persist in dropdown
-                    onSelect={onTagSelect} // Function will trigger on select event
-                    onRemove={onTagRemove} // Function will trigger on remove event
-                    placeholder="+ Add Tags"
-                    id="tagOption"
-                    isObject={false}
-                    className="tagDrowpdown"
-                  />
-                </div>
-                <div className="col-sm-6 col-md-6 col-lg-8">
-                  <div className="img-style">
-                    <input
-                      type="text"
-                      name="title"
-                      value={title}
-                      onChange={(e) => setTitle(e.target.value)}
-                      placeholder="Blog Title ..."
-                      required
+                    </div>
+                    <div className="text-center-black">
+                      <p>SELECT BLOG CATEGORY</p>
+                    </div>
+                    <Multiselect
+                      options={blogCategoryOptions}
+                      selectedValues={catSelectedValues}
+                      onSelect={onCatSelect}
+                      onRemove={onCatRemove}
+                      placeholder="+ Add Categories"
+                      id="catOption"
+                      isObject={false}
+                      className="catDrowpdown"
+                    />
+                    <div className="text-center-black">
+                      <p>SELECT BLOG TAGS</p>
+                    </div>
+                    <Multiselect
+                      options={blogTagsOptions}
+                      selectedValues={tagSelectedValues}
+                      onSelect={onTagSelect}
+                      onRemove={onTagRemove}
+                      placeholder="+ Add Tags"
+                      id="tagOption"
+                      isObject={false}
+                      className="tagDrowpdown"
                     />
                   </div>
-                  <SunEditor
-                    height="60vh"
-                    setDefaultStyle="font-family: Arial; font-size: 16px;"
-                    placeholder="Write your content here ...."
-                    onChange={handleEditorChange}
-                    setOptions={{
-                      buttonList: buttonList.complex,
-                    }}
-                  />
-                  <div style={{ justifyContent: "flex-end" }}>
-                    <button className="blue-button" onClick={draftPost}>
-                      Draft
-                    </button>
-                    <button className="blue-button" onClick={publishPost}>
-                      {isProcessing ? "Publishing ..." : `Publish`}
-                    </button>
+                  <div className="col-sm-6 col-md-6 col-lg-8">
+                    <div className="img-style">
+                      <input
+                        type="text"
+                        name="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Blog Title ..."
+                        required
+                      />
+                    </div>
+                    <SunEditor
+                      height="60vh"
+                      setDefaultStyle="font-family: Arial; font-size: 16px;"
+                      placeholder="Write your content here ...."
+                      onChange={handleEditorChange}
+                      setOptions={{
+                        buttonList: buttonList.complex,
+                      }}
+                    />
+                    <div style={{ justifyContent: "flex-end" }}>
+                      <button
+                        className="blue-button"
+                        type="submit"
+                        onClick={draftPost}
+                      >
+                        {isProcessing ? "Drafting ..." : `Draft`}
+                      </button>
+                      <button
+                        type="submit"
+                        className="blue-button"
+                        onClick={publishPost}
+                      >
+                        {isProcessing ? "Publishing ..." : `Publish`}
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </form>
             ) : (
               <div className="text-center-black">
                 <p>{message}</p>

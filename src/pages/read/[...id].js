@@ -25,7 +25,7 @@ const BlogDetails = ({ data }) => {
         <Header classOption="hb-border" />
         <div className="main-content">
           <div className="container">
-            {result.template === "template_with_thumbimage" ? (
+            {result.template === "template_with_headerimage" ? (
               <BlogDetailsContainer data={result} />
             ) : (
               <BlogDetailsWithoutImage data={result} />
@@ -43,7 +43,9 @@ const BlogDetails = ({ data }) => {
         <Header classOption="hb-border" />
         <div className="main-content">
           <div className="container">
-            <p>Nothing Here ...</p>
+            <div className="hv-center">
+              <p>Nothing Here ...</p>
+            </div>
           </div>
         </div>
         <Footer />
