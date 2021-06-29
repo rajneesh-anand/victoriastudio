@@ -1,24 +1,17 @@
-import React, { useState } from "react";
-import { signIn, useSession, getCsrfToken } from "next-auth/client";
+import React, { useState, useEffect } from "react";
+import { signIn, getCsrfToken, getSession } from "next-auth/client";
 import SEO from "../../components/seo";
 import Footer from "../../layouts/footer";
 import Header from "../../layouts/header";
 import Layout from "../../layouts";
-import { useRouter } from "next/router";
 
 export default function SignIn({ csrfToken }) {
   const [email, setEmail] = useState("");
-  const [session, loading] = useSession();
-  const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn("email", { email: email });
   };
-
-  if (session) {
-    router.push("/user/account");
-  }
 
   return (
     <Layout>
@@ -38,7 +31,14 @@ export default function SignIn({ csrfToken }) {
                   </div>
 
                   <div className="commonStyle">
-                    <button className="google" onClick={() => signIn("google")}>
+                    <button
+                      className="google"
+                      onClick={() =>
+                        signIn("google", {
+                          callbackUrl: "https://vic.vercel.app/",
+                        })
+                      }
+                    >
                       <span
                         className="fab fa-google fa-lg"
                         aria-hidden="true"
@@ -89,7 +89,8 @@ export default function SignIn({ csrfToken }) {
                   <div>
                     <p>
                       By Login, you agree to Victoria Studio
-                      <a href="http://www.google.com"> Terms of Service </a>and
+                      <a href="http://www.google.com"> Terms of Service </a>
+                      and
                       <a target="_blank" href="http://www.google.com">
                         {" "}
                         Privacy Policy
@@ -107,8 +108,19 @@ export default function SignIn({ csrfToken }) {
     </Layout>
   );
 }
+
 export async function getServerSideProps(context) {
   const csrfToken = await getCsrfToken(context);
+  const session = await getSession(context);
+  if (session) {
+    return {
+      redirect: {
+        destination: "/user/account",
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: { csrfToken },
   };
