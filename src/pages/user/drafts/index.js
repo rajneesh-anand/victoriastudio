@@ -7,7 +7,7 @@ import Footer from "../../../layouts/footer";
 import Header from "../../../layouts/header";
 import Layout from "../../../layouts";
 import ScrollToTop from "../../../components/scroll-to-top";
-import BlogContainerTwo from "../../../containers/blog/blog-two";
+import BlogContainerDraft from "../../../containers/blog/blog-draft";
 
 const Account = ({ blogData }) => {
   const [session] = useSession();
@@ -85,7 +85,7 @@ const Account = ({ blogData }) => {
               </div>
             </div>
           </div>
-          <BlogContainerTwo data={data} />
+          <BlogContainerDraft data={data} />
         </div>
         <Footer />
         <ScrollToTop />
