@@ -168,7 +168,7 @@ const Newpost = () => {
     }
   };
 
-  loading ? (
+  return loading ? (
     <div className="hv-center">
       <div className="spinner-border text-primary" role="status">
         <span className="sr-only">Loading...</span>
