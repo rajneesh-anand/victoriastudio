@@ -470,7 +470,7 @@
     }
     p {
       font-size: 26px;
-      border-bottom: solid 2px teal;
+      // border-bottom: solid 2px teal;
       @media #{$xxs-device} {
         border-bottom: solid 1px teal;
         font-size: 20px;

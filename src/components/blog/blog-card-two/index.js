@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import Router from "next/router";
-import htmr from "htmr";
 
 const BlogCardTwo = ({ data }) => {
   const formatDate = (dateString) => {

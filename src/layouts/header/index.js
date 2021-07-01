@@ -1,11 +1,16 @@
 import PropTypes from "prop-types";
 import { Fragment, useEffect, useState } from "react";
 import HamburgerMenu from "../../components/hamburger-menu";
-import HeaderSearch from "../../components/header-search";
 import Logo from "../../components/logo";
+import Profile from "../../components/profile";
 import PopupSearch from "../../components/popup-search";
+import SideBarMenu from "../../components/sidebar-menu";
 
 const Header = ({ classOption }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [ofcanvasShow, setOffcanvasShow] = useState(false);
   const onCanvasHandler = () => {
     setOffcanvasShow((prev) => !prev);
@@ -39,7 +44,7 @@ const Header = ({ classOption }) => {
           <div className="row align-items-center justify-content-between">
             <div className="col-auto">
               <div className="header-action-area">
-                <button className="btn-menu" onClick={onCanvasHandler}>
+                <button className="btn-menu" onClick={handleShow}>
                   <span></span>
                   <span></span>
                   <span></span>
@@ -53,15 +58,15 @@ const Header = ({ classOption }) => {
                 <Logo image={`${process.env.PUBLIC_URL}/img/logo.png`} />
               </div>
             </div>
-
             <div className="col-auto">
-              {/* <HeaderSearch onClick={onSearchHandler} /> */}
+              <Profile />
             </div>
           </div>
         </div>
       </header>
-      <PopupSearch show={searchbarShow} onClose={onSearchHandler} />
-      <HamburgerMenu show={ofcanvasShow} onClose={onCanvasHandler} />
+      <SideBarMenu show={show} handleClose={handleClose} />
+      {/* <PopupSearch show={searchbarShow} onClose={onSearchHandler} />
+      <HamburgerMenu show={ofcanvasShow} onClose={onCanvasHandler} /> */}
     </Fragment>
   );
 };

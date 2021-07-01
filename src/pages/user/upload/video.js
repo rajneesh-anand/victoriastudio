@@ -101,10 +101,10 @@ const UploadVideo = () => {
             <Header />
 
             <div className="main-content">
-              <div className="text-center-black">
+              <div className="hv-center">
                 <p>Please Sign In to upload photos </p>
                 <Link href="/auth/signin">
-                  <a>Sign In</a>
+                  <a className="blue-button"> Sign In</a>
                 </Link>
               </div>
             </div>

@@ -51,7 +51,7 @@
 }
 
 .blog-area {
-  border-top: solid 1px #ccc;
+  // border-top: solid 1px #ccc;
   &.blog-masonry-area {
     padding: 0 0 100px;
     @media #{$md-device} {
@@ -1024,7 +1024,8 @@
   min-height: 20px;
   background-color: #002e5b;
   color: #ffffff;
-  border-radius: 4px;
+  // border-radius: 4px;
+  border: none;
   text-align: center;
   font-weight: lighter;
   margin: 5px 8px;
@@ -1046,20 +1047,6 @@
   }
   @media #{$xs-device} {
     margin-top: 8px;
-  }
-}
-.buttonCol {
-  font-size: 16px;
-  text-align: center;
-  border: solid 1px darkgreen;
-  margin: 5px;
-  background-color: teal;
-  cursor: pointer;
-  a {
-    color: white !important;
-  }
-  @media #{$xs-device} {
-    font-size: 10px;
   }
 }
 
