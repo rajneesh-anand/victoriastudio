@@ -89,33 +89,34 @@ const UploadVideo = () => {
     }
   };
 
-  if (!loading && !session) {
-    return (
-      <React.Fragment>
-        <Layout>
-          <SEO
-            title="Video Upload | Victoria Studio "
-            canonical={process.env.PUBLIC_URL + "/user/video"}
-          />
-          <div className="wrapper home-default-wrapper">
-            <Header />
-
-            <div className="main-content">
-              <div className="hv-center">
-                <p>Please Sign In to upload photos </p>
-                <Link href="/auth/signin">
-                  <a className="blue-button"> Sign In</a>
-                </Link>
-              </div>
+  return loading ? (
+    <div className="hv-center">
+      <div className="spinner-border text-primary" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
+  ) : !session ? (
+    <React.Fragment>
+      <Layout>
+        <SEO
+          title="Video Upload | Victoria Studio "
+          canonical={process.env.PUBLIC_URL + "/user/video"}
+        />
+        <div className="wrapper home-default-wrapper">
+          <Header />
+          <div className="main-content">
+            <div className="hv-center">
+              <p>Please Sign In to upload Videos</p>
+              <Link href="/auth/signin">
+                <a className="blue-button"> Sign In</a>
+              </Link>
             </div>
-            <Footer />
           </div>
-        </Layout>
-      </React.Fragment>
-    );
-  }
-
-  return (
+          <Footer />
+        </div>
+      </Layout>
+    </React.Fragment>
+  ) : (
     <React.Fragment>
       <Layout>
         <SEO
