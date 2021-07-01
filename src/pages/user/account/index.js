@@ -70,7 +70,7 @@ const Account = ({ blogData }) => {
                       <a>Upload Product</a>
                     </div>
                   </Link>
-                  <Link href="/user/newblog">
+                  <Link href="/blogs">
                     <a>Write New Blog</a>
                   </Link>
                 </div>
