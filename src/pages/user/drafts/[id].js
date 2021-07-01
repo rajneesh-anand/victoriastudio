@@ -15,6 +15,7 @@ import { blogCategoryOptions } from "../../../constant/blogs";
 
 // const SunEditor = dynamic(() => import("suneditor-react"), {
 //   ssr: false,
+//
 // });
 
 const Multiselect = dynamic(
