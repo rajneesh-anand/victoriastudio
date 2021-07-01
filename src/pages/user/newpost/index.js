@@ -168,37 +168,7 @@ const Newpost = () => {
     }
   };
 
-  return loading ? (
-    <div className="hv-center">
-      <div className="spinner-border text-primary" role="status">
-        <span className="sr-only">Loading...</span>
-      </div>
-    </div>
-  ) : !session ? (
-    <React.Fragment>
-      <Layout>
-        <SEO
-          title="New Blog | Victoria Studio "
-          canonical={process.env.PUBLIC_URL + "/user/newpost"}
-        />
-        <div className="wrapper home-default-wrapper">
-          <Header classOption="hb-border" />
-          <div className="main-content">
-            <div className="hv-center">
-              <div className="text-center-black">
-                <p>Please Sign In to Post Your Blogs </p>
-                <Link href="/auth/signin">
-                  <a>Sign In</a>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <Footer />
-          <ScrollToTop />
-        </div>
-      </Layout>
-    </React.Fragment>
-  ) : (
+  return (
     <React.Fragment>
       <Layout>
         <SEO
