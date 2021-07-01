@@ -1,6 +1,6 @@
 import React from "react";
 import BlogContainer from "../../containers/blog/blog-grid";
-import PageTitleContainerTwo from "../../containers/global/page-title-two";
+// import PageTitleContainerTwo from "../../containers/global/page-title-two";
 import ScrollToTop from "../../components/scroll-to-top";
 import SEO from "../../components/seo";
 import Footer from "../../layouts/footer";
@@ -17,7 +17,7 @@ const BlogsPage = ({ blogData }) => {
       <div className="wrapper home-default-wrapper">
         <Header classOption="hb-border" />
         <div className="main-content">
-          <PageTitleContainerTwo subTitle="Blogs" title="Write &amp; Share" />
+          {/* <PageTitleContainerTwo subTitle="Blogs" title="Write &amp; Share" /> */}
           <BlogContainer blogData={blogData} />
         </div>
         <Footer />

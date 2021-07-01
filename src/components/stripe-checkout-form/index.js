@@ -182,7 +182,7 @@ const StripeCheckoutForm = ({ data }) => {
         </div>
         <div className="text-center">
           <button
-            className="btn-submit"
+            className="blue-button"
             type="submit"
             disabled={isProcessing || !stripe}
           >
