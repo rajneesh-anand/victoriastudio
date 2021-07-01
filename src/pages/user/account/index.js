@@ -48,7 +48,7 @@ const Account = ({ blogData }) => {
         <div className="main-content">
           <div className="container">
             <div className="row">
-              <div className="col-lg-2 col-md-2 col-xs-6 buttonList">
+              <div className="col-lg-2 col-md-2 buttonList">
                 <div>
                   <Link href="/user/newpost">
                     <div className="buttonCol">
