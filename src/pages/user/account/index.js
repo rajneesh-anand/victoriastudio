@@ -51,9 +51,7 @@ const Account = ({ blogData }) => {
               <div className="col-lg-2 col-md-2 buttonList">
                 <div>
                   <Link href="/user/newpost">
-                    <div className="buttonCol">
-                      <a>Write New Blog</a>
-                    </div>
+                    <a>Write New Blog</a>
                   </Link>
                   <Link href="/user/drafts">
                     <div className="buttonCol">
