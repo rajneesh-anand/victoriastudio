@@ -44,6 +44,7 @@ function SinglePostForEdit({ post }) {
   const [tags, setTags] = useState(blogData.tags);
   const [categories, setCategories] = useState(blogData.categories);
   const [isProcessing, setProcessingTo] = useState(false);
+  const [isDrafting, setDraftingTo] = useState(false);
 
   const tagSelectedValues = ["Nature", "People"];
   const catSelectedValues = ["New Added", "People"];
@@ -72,10 +73,10 @@ function SinglePostForEdit({ post }) {
 
   const draftPost = async (e) => {
     e.preventDefault();
-    if (title === "" || html === "") {
+    if (data.title === "") {
       return;
     }
-    setProcessingTo(true);
+    setDraftingTo(true);
 
     try {
       const formData = new FormData();
@@ -93,7 +94,7 @@ function SinglePostForEdit({ post }) {
           ? JSON.stringify(tagSelectedValues)
           : JSON.stringify(tags)
       );
-      formData.append("content", html === "" ? data.content : html);
+      formData.append("content", !html ? data.content : html);
       formData.append(
         "template",
         template === "" ? blogData.template : template
@@ -118,7 +119,7 @@ function SinglePostForEdit({ post }) {
       const resultJson = await result.json();
 
       if (resultJson.msg === "success") {
-        setProcessingTo(false);
+        setDraftingTo(false);
         setMessage("Your Draft is updated successfully");
       }
     } catch (error) {
@@ -129,7 +130,7 @@ function SinglePostForEdit({ post }) {
 
   const publishPost = async (e) => {
     e.preventDefault();
-    if (title === "" || html === "") {
+    if (data.title === "") {
       return;
     }
     setProcessingTo(true);
@@ -150,7 +151,7 @@ function SinglePostForEdit({ post }) {
           ? JSON.stringify(tagSelectedValues)
           : JSON.stringify(tags)
       );
-      formData.append("content", html === "" ? data.content : html);
+      formData.append("content", !html ? data.content : html);
       formData.append(
         "template",
         template === "" ? blogData.template : template
@@ -195,7 +196,7 @@ function SinglePostForEdit({ post }) {
           <Header classOption="hb-border" />
           <div className="main-content">
             <div className="text-center-black">
-              <p>Please Sign In to upload photos </p>
+              <p>Please Sign In to view this page </p>
               <Link href="/auth/signin">
                 <a>Sign In</a>
               </Link>
@@ -307,10 +308,10 @@ function SinglePostForEdit({ post }) {
                   />
                   <div style={{ justifyContent: "flex-end" }}>
                     <button className="blue-button" onClick={draftPost}>
-                      Draft
+                      {isDrafting ? "Updating..." : `Draft`}
                     </button>
                     <button className="blue-button" onClick={publishPost}>
-                      Publish
+                      {isProcessing ? "Updating..." : `Publish`}
                     </button>
                   </div>
                 </div>
@@ -319,9 +320,9 @@ function SinglePostForEdit({ post }) {
               <div className="text-center-black">
                 <p>{message}</p>
 
-                <button className="blue-button" onClick={() => setMessage("")}>
-                  New Blog
-                </button>
+                <Link href="/user/newpost">
+                  <a className="blue-button">New Blog</a>
+                </Link>
                 <Link href="/blogs">
                   <a className="blue-button">Goto Blogs Page</a>
                 </Link>

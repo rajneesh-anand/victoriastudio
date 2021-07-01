@@ -33,6 +33,7 @@ const Newpost = () => {
   const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isProcessing, setProcessingTo] = useState(false);
+  const [isDrafting, setDraftingTo] = useState(false);
   const [template, setTemplate] = useState("template_with_headerimage");
 
   const tagSelectedValues = ["Nature", "People"];
@@ -66,7 +67,7 @@ const Newpost = () => {
     if (title === "" || html === "") {
       return;
     }
-    setProcessingTo(true);
+    setDraftingTo(true);
 
     try {
       const formData = new FormData();
@@ -106,7 +107,7 @@ const Newpost = () => {
       const resultJson = await result.json();
       // console.log(resultJson);
       if (resultJson.msg === "success") {
-        setProcessingTo(false);
+        setDraftingTo(false);
         setMessage("Your Blog is drafted successfully");
       }
     } catch (error) {
@@ -292,7 +293,7 @@ const Newpost = () => {
                         type="submit"
                         onClick={draftPost}
                       >
-                        {isProcessing ? "Drafting ..." : `Draft`}
+                        {isDrafting ? "Drafting ..." : `Draft`}
                       </button>
                       <button
                         type="submit"
@@ -308,9 +309,9 @@ const Newpost = () => {
             ) : (
               <div className="text-center-black">
                 <p>{message}</p>
-                <button className="blue-button" onClick={() => setMessage("")}>
-                  New Blog
-                </button>
+                <Link href="/user/newpost">
+                  <a className="blue-button">New Blog</a>
+                </Link>
                 <Link href="/blogs">
                   <a className="blue-button">Goto Blogs Page</a>
                 </Link>
